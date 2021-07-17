@@ -1,0 +1,220 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="使用Vue-cli搭建Vue项目 安装Vue-cli 在安装Vue-cli之前需要先安装node环境以及npm包管理工具
+安装好之后可以通过以下命令查看版本
+:: 查看node版本 node -v :: 查看npm版本 npm -v 全局安装Vue-cli
+npm install @vue/cli -g :: 或者 yarn global add @vue/cli 安装后使用vue --version来查看版本
+运行以下命令在当前文件夹下创建一个项目
+:: 命令行创建项目 vue create &amp;lt;projectName&amp;gt; :: 使用可视化项目创建工具 vue ui 创建完成后，进入到刚才创建的文件夹下，运行npm run serve即可启动项目
+项目结构 &amp;lt;projectName&amp;gt; ├─node_modules ├─public │ └─index.html ├─src │ ├─assets │ ├─components │ ├─App.vue │ └─main.js └package.json  package.json 用于记录项目依赖的库 assets 用于存放静态资源，比如图片 components 用于存放组件 App.vue 根组件 main.js 项目入口脚本  写一个Hello World 写在vue文件中
+&amp;lt;!-- 模板: html结构 --&amp;gt; &amp;lt;!"><title>使用Vue-cli搭建Vue项目</title><link rel=canonical href=https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8vue-cli%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="使用Vue-cli搭建Vue项目"><meta property="og:description" content="使用Vue-cli搭建Vue项目 安装Vue-cli 在安装Vue-cli之前需要先安装node环境以及npm包管理工具
+安装好之后可以通过以下命令查看版本
+:: 查看node版本 node -v :: 查看npm版本 npm -v 全局安装Vue-cli
+npm install @vue/cli -g :: 或者 yarn global add @vue/cli 安装后使用vue --version来查看版本
+运行以下命令在当前文件夹下创建一个项目
+:: 命令行创建项目 vue create &amp;lt;projectName&amp;gt; :: 使用可视化项目创建工具 vue ui 创建完成后，进入到刚才创建的文件夹下，运行npm run serve即可启动项目
+项目结构 &amp;lt;projectName&amp;gt; ├─node_modules ├─public │ └─index.html ├─src │ ├─assets │ ├─components │ ├─App.vue │ └─main.js └package.json  package.json 用于记录项目依赖的库 assets 用于存放静态资源，比如图片 components 用于存放组件 App.vue 根组件 main.js 项目入口脚本  写一个Hello World 写在vue文件中
+&amp;lt;!-- 模板: html结构 --&amp;gt; &amp;lt;!"><meta property="og:url" content="https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8vue-cli%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/"><meta property="og:site_name" content="Ilirus"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="Vue"><meta property="article:published_time" content="2018-12-10T12:20:20+00:00"><meta property="article:modified_time" content="2018-12-10T12:20:20+00:00"><meta name=twitter:title content="使用Vue-cli搭建Vue项目"><meta name=twitter:description content="使用Vue-cli搭建Vue项目 安装Vue-cli 在安装Vue-cli之前需要先安装node环境以及npm包管理工具
+安装好之后可以通过以下命令查看版本
+:: 查看node版本 node -v :: 查看npm版本 npm -v 全局安装Vue-cli
+npm install @vue/cli -g :: 或者 yarn global add @vue/cli 安装后使用vue --version来查看版本
+运行以下命令在当前文件夹下创建一个项目
+:: 命令行创建项目 vue create &amp;lt;projectName&amp;gt; :: 使用可视化项目创建工具 vue ui 创建完成后，进入到刚才创建的文件夹下，运行npm run serve即可启动项目
+项目结构 &amp;lt;projectName&amp;gt; ├─node_modules ├─public │ └─index.html ├─src │ ├─assets │ ├─components │ ├─App.vue │ └─main.js └package.json  package.json 用于记录项目依赖的库 assets 用于存放静态资源，比如图片 components 用于存放组件 App.vue 根组件 main.js 项目入口脚本  写一个Hello World 写在vue文件中
+&amp;lt;!-- 模板: html结构 --&amp;gt; &amp;lt;!"></head><body><script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.body.dataset.scheme='dark':document.body.dataset.scheme='light'})()</script><div class="container main-container flex on-phone--column extended article-page with-toolbar"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hu3efe4cd0dfb29873d1b0d65561d00585_584028_300x0_resize_box_2.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+<span class=emoji>🌌</span></figure><h1 class=site-name><a href=https://chaosalphard.github.io>Ilirus</a></h1><h2 class=site-description>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>暗色模式</span></li></ol></aside><main class="main full-width"><div id=article-toolbar><a href=https://chaosalphard.github.io class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E7%BC%96%E7%A8%8B/>编程</a>
+<a href=/categories/%E5%89%8D%E7%AB%AF/>前端</a>
+<a href=/categories/vue/>Vue</a></header><h2 class=article-title><a href=/p/%E4%BD%BF%E7%94%A8vue-cli%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/>使用Vue-cli搭建Vue项目</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>Dec 10, 2018</time></footer></div></header><section class=article-content><h1 id=使用vue-cli搭建vue项目>使用Vue-cli搭建Vue项目</h1><h2 id=安装vue-cli>安装Vue-cli</h2><p>在安装Vue-cli之前需要先安装<code>node</code>环境以及<code>npm</code>包管理工具</p><p>安装好之后可以通过以下命令查看版本</p><div class=highlight><pre class=chroma><code class=language-batch data-lang=batch><span class=p>:</span><span class=c1>: 查看node版本</span>
+node -v
+
+<span class=p>:</span><span class=c1>: 查看npm版本</span>
+npm -v
+</code></pre></div><p>全局安装Vue-cli</p><div class=highlight><pre class=chroma><code class=language-batch data-lang=batch>npm install @vue/cli -g
+<span class=p>:</span><span class=c1>: 或者</span>
+yarn global add @vue/cli
+</code></pre></div><p>安装后使用<code>vue --version</code>来查看版本</p><p>运行以下命令在<strong>当前</strong>文件夹下创建一个项目</p><div class=highlight><pre class=chroma><code class=language-batch data-lang=batch><span class=p>:</span><span class=c1>: 命令行创建项目</span>
+vue create <span class=p>&lt;</span>projectName&gt;
+
+<span class=p>:</span><span class=c1>: 使用可视化项目创建工具</span>
+vue ui
+</code></pre></div><p>创建完成后，进入到刚才创建的文件夹下，运行<code>npm run serve</code>即可启动项目</p><h2 id=项目结构>项目结构</h2><div class=highlight><pre class=chroma><code class=language-batch data-lang=batch><span class=p>&lt;</span>projectName&gt;
+├─node_modules
+├─public
+│ └─index.html
+├─src
+│ ├─assets
+│ ├─components
+│ ├─App.vue
+│ └─main.js
+└package.json
+</code></pre></div><ul><li><code>package.json</code> 用于记录项目依赖的库</li><li><code>assets</code> 用于存放静态资源，比如图片</li><li><code>components</code> 用于存放组件</li><li><code>App.vue</code> 根组件</li><li><code>main.js</code> 项目入口脚本</li></ul><h2 id=写一个hello-world>写一个Hello World</h2><p>写在vue文件中</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=c>&lt;!-- 模板: html结构 --&gt;</span>
+<span class=c>&lt;!-- template中有且只能有一个根元素 --&gt;</span>
+<span class=p>&lt;</span><span class=nt>template</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;app&#34;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;</span>{{msg}}<span class=p>&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span>
+  <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+<span class=p>&lt;/</span><span class=nt>template</span><span class=p>&gt;</span>
+
+<span class=c>&lt;!-- 行为: 逻辑处理 --&gt;</span>
+<span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
+<span class=kr>export</span> <span class=k>default</span> <span class=p>{</span>
+  <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;app&#39;</span><span class=p>,</span>
+  <span class=nx>data</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>{</span><span class=nx>msg</span><span class=o>:</span> <span class=s1>&#39;Hello World&#39;</span><span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+<span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+
+<span class=c>&lt;!-- 样式: 样式表 --&gt;</span>
+<span class=c>&lt;!-- 加入scope关键词代表样式仅作用于当前组件中 --&gt;</span>
+<span class=c>&lt;!-- &lt;style scope&gt;&lt;/style&gt; --&gt;</span>
+<span class=p>&lt;</span><span class=nt>style</span><span class=p>&gt;</span>
+<span class=p>#</span><span class=nn>app</span> <span class=p>{</span>
+  <span class=k>text-align</span><span class=p>:</span> <span class=kc>center</span><span class=p>;</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#2c3e50</span><span class=p>;</span>
+<span class=p>}</span>
+<span class=p>&lt;/</span><span class=nt>style</span><span class=p>&gt;</span>
+</code></pre></div><p>写在main.js中</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// 引入Vue
+</span><span class=c1></span><span class=kr>import</span> <span class=nx>Vue</span> <span class=nx>from</span> <span class=s1>&#39;vue&#39;</span>
+<span class=c1>// 引入根组件
+</span><span class=c1></span><span class=kr>import</span> <span class=nx>App</span> <span class=nx>from</span> <span class=s1>&#39;./App.vue&#39;</span>
+
+<span class=c1>// 阻止Vue在启动时生成生产提示
+</span><span class=c1></span><span class=nx>Vue</span><span class=p>.</span><span class=nx>config</span><span class=p>.</span><span class=nx>productionTip</span> <span class=o>=</span> <span class=kc>false</span>
+
+<span class=c1>// 实例化Vue对象
+</span><span class=c1></span><span class=k>new</span> <span class=nx>Vue</span><span class=p>({</span>
+  <span class=nx>render</span><span class=o>:</span> <span class=kd>function</span><span class=p>(</span><span class=nx>h</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=nx>h</span><span class=p>(</span><span class=nx>App</span><span class=p>)</span> <span class=p>}</span>
+<span class=p>}).</span><span class=nx>$mount</span><span class=p>(</span><span class=s1>&#39;#app&#39;</span><span class=p>)</span>
+
+<span class=c1>// 也可使用以下方式
+</span><span class=c1></span><span class=k>new</span> <span class=nx>Vue</span><span class=p>({</span>
+  <span class=nx>el</span><span class=o>:</span> <span class=s1>&#39;#app&#39;</span><span class=p>,</span>
+  <span class=nx>template</span><span class=o>:</span> <span class=s1>&#39;&lt;App/&gt;&#39;</span><span class=p>,</span>
+  <span class=nx>components</span><span class=o>:</span> <span class=p>{</span> <span class=nx>App</span> <span class=p>}</span>
+<span class=p>})</span>
+</code></pre></div><h2 id=创建并使用自己的组件>创建并使用自己的组件</h2><p>在/src/components目录下创建<code>.vue</code>文件，注册之后在<code>.vue</code>文件中可以使用<code>&lt;compName/></code>或<code>&lt;compName>&lt;/compName></code>的形式来使用组件</p><h3 id=全局注册组件>全局注册组件</h3><p>在<code>main.js</code>中注册组件</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// 引入组件
+</span><span class=c1></span><span class=kr>import</span> <span class=nx>compName</span> <span class=nx>from</span> <span class=s1>&#39;./components/compName&#39;</span>
+
+<span class=c1>// 全局注册组件
+</span><span class=c1></span><span class=nx>Vue</span><span class=p>.</span><span class=nx>component</span><span class=p>(</span><span class=s2>&#34;compName&#34;</span><span class=p>,</span> <span class=nx>compName</span><span class=p>)</span>
+</code></pre></div><h3 id=局部注册组件>局部注册组件</h3><p>在要注册组件的<code>.vue</code>文件中</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
+<span class=c1>// 引入组件
+</span><span class=c1></span><span class=kr>import</span> <span class=nx>compName</span> <span class=nx>from</span> <span class=s1>&#39;./components/compName.vue&#39;</span>
+
+<span class=kr>export</span> <span class=k>default</span> <span class=p>{</span>
+  <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;app&#39;</span><span class=p>,</span>
+  <span class=nx>data</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>{</span><span class=nx>msg</span><span class=o>:</span> <span class=s1>&#39;Hello World&#39;</span><span class=p>}</span>
+  <span class=p>},</span>
+  <span class=c1>//局部注册组件
+</span><span class=c1></span>  <span class=nx>components</span><span class=o>:</span> <span class=p>{</span>
+    <span class=s1>&#39;compName&#39;</span><span class=o>:</span> <span class=nx>compName</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+<span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</code></pre></div><h2 id=组件间的传值props>组件间的传值(props)</h2><h3 id=父组件向子组件传值>父组件向子组件传值</h3><p>父组件中给子组件绑定属性值</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>template</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;app&#34;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>compName</span> <span class=na>v-bind:msg</span><span class=o>=</span><span class=s>&#34;msg&#34;</span><span class=p>&gt;</span>
+  <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+<span class=p>&lt;/</span><span class=nt>template</span><span class=p>&gt;</span>
+
+<span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
+<span class=kr>import</span> <span class=nx>HelloWorld</span> <span class=nx>from</span> <span class=s1>&#39;./components/HelloWorld.vue&#39;</span>
+
+<span class=kr>export</span> <span class=k>default</span> <span class=p>{</span>
+  <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;app&#39;</span><span class=p>,</span>
+  <span class=nx>data</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>{</span>
+      <span class=nx>msg</span><span class=o>:</span> <span class=s2>&#34;Hello World&#34;</span>
+    <span class=p>}</span>
+  <span class=p>},</span>
+  <span class=nx>components</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>HelloWorld</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+<span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</code></pre></div><p>在子组件中获取</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
+<span class=kr>export</span> <span class=k>default</span> <span class=p>{</span>
+  <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;HelloWorld&#39;</span><span class=p>,</span>
+  <span class=nx>props</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>msg</span><span class=o>:</span> <span class=nb>String</span><span class=p>,</span>
+    <span class=k>default</span><span class=o>:</span> <span class=s1>&#39;Def&#39;</span>  <span class=c1>// 默认值
+</span><span class=c1></span>  <span class=p>}</span>
+<span class=p>}</span>
+<span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+
+<span class=c>&lt;!-- 或者 --&gt;</span>
+
+<span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
+<span class=kr>export</span> <span class=k>default</span> <span class=p>{</span>
+  <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;HelloWorld&#39;</span><span class=p>,</span>
+  <span class=nx>props</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>msg</span><span class=o>:</span> <span class=p>{</span>
+      <span class=nx>type</span><span class=o>:</span> <span class=nb>String</span><span class=p>,</span>
+      <span class=nx>required</span><span class=o>:</span> <span class=kc>true</span>  <span class=c1>//required 为true 表示这个参数必须被传入
+</span><span class=c1></span>    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+<span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</code></pre></div><h3 id=子组件向父组件传值>子组件向父组件传值</h3><p>子组件中注册事件</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=nx>methods</span><span class=o>:</span><span class=p>{</span>
+  <span class=nx>foo</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>$emit</span><span class=p>(</span><span class=nx>ctmEvent</span><span class=p>,</span><span class=nx>trsValue</span><span class=p>)</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div><p><code>ctmEvent</code>即为注册的事件名称<br><code>trsValue</code>即为向父组件传递的值</p><p>父组件中绑定事件</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>compName</span> <span class=na>v-on:ctmEvent</span><span class=o>=</span><span class=s>&#34;fun($event)&#34;</span> <span class=p>/&gt;</span>
+</code></pre></div><p>父组件中绑定事件后，当子组件触发事件后，会执行对应的函数，使用<code>$event</code> 来获取到子组件传递过来的值</p><p>定义函数来处理子组件传递过来的值，这里的<code>para</code>对应的是<code>$event</code></p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=nx>fun</span><span class=p>(</span><span class=nx>para</span><span class=p>)</span> <span class=p>{</span>
+  <span class=k>this</span><span class=p>.</span><span class=nx>title</span> <span class=o>=</span> <span class=nx>para</span>
+<span class=p>}</span>
+</code></pre></div><h2 id=组件的生命周期钩子函数>组件的生命周期(钩子函数)</h2><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kr>export</span> <span class=k>default</span> <span class=p>{</span>
+  <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;app&#39;</span><span class=p>,</span>
+  <span class=nx>data</span><span class=p>()</span> <span class=p>{</span> <span class=p>...</span> <span class=p>},</span>
+  <span class=nx>methods</span><span class=o>:</span> <span class=p>{</span> <span class=p>...</span> <span class=p>},</span>
+
+  <span class=c1>// 组件实例化之前
+</span><span class=c1></span>  <span class=c1>// 数据观测(data observer)和event/watcher 事件配置之前被调用
+</span><span class=c1></span>  <span class=nx>beforeCreate</span><span class=p>()</span> <span class=p>{},</span>
+
+  <span class=c1>// 组件实例化完毕, 但页面还没显示
+</span><span class=c1></span>  <span class=c1>// 实例创建完成后立即被调用, 数据观测(data observer)和event/watcher 已配置, $el属性不可见
+</span><span class=c1></span>  <span class=nx>created</span><span class=p>()</span> <span class=p>{},</span>
+
+  <span class=c1>// 组件挂载之前, 页面依然未显示, (但虚拟Dom 已经配置  (存疑))
+</span><span class=c1></span>  <span class=c1>// 在挂载前被调用, 相关render 函数首次被调用
+</span><span class=c1></span>  <span class=nx>beforeMount</span><span class=p>()</span> <span class=p>{},</span>
+
+  <span class=c1>// 组件挂载后, 此方法执行完成后, 页面显示
+</span><span class=c1></span>  <span class=c1>// el 被新创建的vm.$el替换并挂载到实例上之后调用
+</span><span class=c1></span>  <span class=nx>mounted</span><span class=p>()</span> <span class=p>{},</span>
+
+  <span class=c1>// 组件更新前调用(此时仍然可以访问到更新前的Dom)
+</span><span class=c1></span>  <span class=nx>beforeUpdate</span><span class=p>()</span> <span class=p>{},</span>
+
+  <span class=c1>// 组件更新后调用(Dom 更新后调用)
+</span><span class=c1></span>  <span class=nx>updated</span><span class=p>()</span> <span class=p>{},</span>
+
+  <span class=c1>// keep-alive 组件激活时调用
+</span><span class=c1></span>  <span class=nx>activated</span><span class=p>()</span> <span class=p>{},</span>
+
+  <span class=c1>// keep-alive 组件停用时调用
+</span><span class=c1></span>  <span class=nx>deactivated</span><span class=p>()</span> <span class=p>{}</span>
+
+  <span class=c1>// 组件销毁前
+</span><span class=c1></span>  <span class=nx>beforeDestroy</span><span class=p>()</span> <span class=p>{},</span>
+
+  <span class=c1>// 组件销毁
+</span><span class=c1></span>  <span class=nx>destroyed</span><span class=p>()</span> <span class=p>{},</span>
+
+  <span class=c1>// 捕获来自子组件的错误时调用
+</span><span class=c1></span>  <span class=c1>// 可以返回false 以阻止错误继续向上传播
+</span><span class=c1></span>  <span class=nx>errorCaptured</span><span class=p>(</span><span class=nb>Error</span><span class=p>,</span> <span class=nx>Component</span><span class=p>,</span> <span class=nx>InfoString</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=kc>false</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></section><footer class=article-footer><section class=article-tags><a href=/tags/javascript/>JavaScript</a>
+<a href=/tags/vue/>Vue</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper><h2 class=section-title>相关文章</h2><div class=related-contents><div class="flex article-list--tile"><article><a href=/p/vue-router%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/><div class=article-details><h2 class=article-title>Vue Router的安装与使用</h2></div></a></article><article><a href=/p/webpack%E4%B8%ADcss%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%A4%84%E7%90%86/><div class=article-details><h2 class=article-title>Webpack中CSS样式的处理</h2></div></a></article><article><a href=/p/webpack%E9%85%8D%E7%BD%AEhtml-template/><div class=article-details><h2 class=article-title>Webpack配置HTML Template</h2></div></a></article><article><a href=/p/webpack%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/><div class=article-details><h2 class=article-title>Webpack的安装与配置</h2></div></a></article><article><a href=/p/es6%E4%B8%AD%E7%9A%84%E5%B0%BE%E9%80%92%E5%BD%92/><div class=article-details><h2 class=article-title>ES6中的尾递归</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//hugo-theme-stack.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener('onColorSchemeChange',a=>{DISQUS&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2021 Ilirus</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.3.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script></body></html>

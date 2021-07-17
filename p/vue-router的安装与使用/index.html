@@ -1,0 +1,228 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Vue Router 的基本用法 安装Vue路由 vue add @vue/router :: 或者 npm install vue-router -S yarn add vue-router 引入路由 写在main.js文件中
+// 引入Router import Router from &amp;#39;vue-router&amp;#39;; // 引入路由跳转的组件 import Home from &amp;#39;./components/Home&amp;#39;; // 配置Router const router = new VueRouter({ // 路由模式 (hash | history | abstract(如果没有发现浏览器API, 会自动进入此模式))  // 使用history模式可以去掉地址栏的&amp;#39;#&amp;#39;字符, 但需要后端配置支持  // history 模式利用window.history API 来完成页面的跳转而无需重新加载页面  mode: &amp;#39;history&amp;#39;, base: process.env.BASE_URL, routes: [ { path: &amp;#39;/&amp;#39;, name: &amp;#39;home&amp;#39;, component: Home }, { path: &amp;#39;/about&amp;#39;, name: &amp;#39;about&amp;#39;, component: () =&amp;gt; import(&amp;#39;."><title>Vue Router的安装与使用</title><link rel=canonical href=https://chaosalphard.github.io/p/vue-router%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Vue Router的安装与使用"><meta property="og:description" content="Vue Router 的基本用法 安装Vue路由 vue add @vue/router :: 或者 npm install vue-router -S yarn add vue-router 引入路由 写在main.js文件中
+// 引入Router import Router from &amp;#39;vue-router&amp;#39;; // 引入路由跳转的组件 import Home from &amp;#39;./components/Home&amp;#39;; // 配置Router const router = new VueRouter({ // 路由模式 (hash | history | abstract(如果没有发现浏览器API, 会自动进入此模式))  // 使用history模式可以去掉地址栏的&amp;#39;#&amp;#39;字符, 但需要后端配置支持  // history 模式利用window.history API 来完成页面的跳转而无需重新加载页面  mode: &amp;#39;history&amp;#39;, base: process.env.BASE_URL, routes: [ { path: &amp;#39;/&amp;#39;, name: &amp;#39;home&amp;#39;, component: Home }, { path: &amp;#39;/about&amp;#39;, name: &amp;#39;about&amp;#39;, component: () =&amp;gt; import(&amp;#39;."><meta property="og:url" content="https://chaosalphard.github.io/p/vue-router%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"><meta property="og:site_name" content="Ilirus"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="Vue"><meta property="article:published_time" content="2019-01-25T00:10:10+00:00"><meta property="article:modified_time" content="2019-01-25T00:10:10+00:00"><meta name=twitter:title content="Vue Router的安装与使用"><meta name=twitter:description content="Vue Router 的基本用法 安装Vue路由 vue add @vue/router :: 或者 npm install vue-router -S yarn add vue-router 引入路由 写在main.js文件中
+// 引入Router import Router from &amp;#39;vue-router&amp;#39;; // 引入路由跳转的组件 import Home from &amp;#39;./components/Home&amp;#39;; // 配置Router const router = new VueRouter({ // 路由模式 (hash | history | abstract(如果没有发现浏览器API, 会自动进入此模式))  // 使用history模式可以去掉地址栏的&amp;#39;#&amp;#39;字符, 但需要后端配置支持  // history 模式利用window.history API 来完成页面的跳转而无需重新加载页面  mode: &amp;#39;history&amp;#39;, base: process.env.BASE_URL, routes: [ { path: &amp;#39;/&amp;#39;, name: &amp;#39;home&amp;#39;, component: Home }, { path: &amp;#39;/about&amp;#39;, name: &amp;#39;about&amp;#39;, component: () =&amp;gt; import(&amp;#39;."></head><body><script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.body.dataset.scheme='dark':document.body.dataset.scheme='light'})()</script><div class="container main-container flex on-phone--column extended article-page with-toolbar"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hu3efe4cd0dfb29873d1b0d65561d00585_584028_300x0_resize_box_2.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+<span class=emoji>🌌</span></figure><h1 class=site-name><a href=https://chaosalphard.github.io>Ilirus</a></h1><h2 class=site-description>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>暗色模式</span></li></ol></aside><main class="main full-width"><div id=article-toolbar><a href=https://chaosalphard.github.io class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E7%BC%96%E7%A8%8B/>编程</a>
+<a href=/categories/%E5%89%8D%E7%AB%AF/>前端</a>
+<a href=/categories/vue/>Vue</a></header><h2 class=article-title><a href=/p/vue-router%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/>Vue Router的安装与使用</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>Jan 25, 2019</time></footer></div></header><section class=article-content><h1 id=vue-router-的基本用法>Vue Router 的基本用法</h1><h2 id=安装vue路由>安装Vue路由</h2><div class=highlight><pre class=chroma><code class=language-batch data-lang=batch>vue add @vue/router
+
+<span class=p>:</span><span class=c1>: 或者</span>
+npm install vue-router -S
+
+yarn add vue-router
+</code></pre></div><h2 id=引入路由>引入路由</h2><p>写在main.js文件中</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// 引入Router
+</span><span class=c1></span><span class=kr>import</span> <span class=nx>Router</span> <span class=nx>from</span> <span class=s1>&#39;vue-router&#39;</span><span class=p>;</span>
+
+<span class=c1>// 引入路由跳转的组件
+</span><span class=c1></span><span class=kr>import</span> <span class=nx>Home</span> <span class=nx>from</span> <span class=s1>&#39;./components/Home&#39;</span><span class=p>;</span>
+
+<span class=c1>// 配置Router
+</span><span class=c1></span><span class=kr>const</span> <span class=nx>router</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>VueRouter</span><span class=p>({</span>
+  <span class=c1>// 路由模式 (hash | history | abstract(如果没有发现浏览器API, 会自动进入此模式))
+</span><span class=c1></span>  <span class=c1>// 使用history模式可以去掉地址栏的&#39;#&#39;字符, 但需要后端配置支持
+</span><span class=c1></span>  <span class=c1>// history 模式利用window.history API 来完成页面的跳转而无需重新加载页面
+</span><span class=c1></span>  <span class=nx>mode</span><span class=o>:</span> <span class=s1>&#39;history&#39;</span><span class=p>,</span>
+  <span class=nx>base</span><span class=o>:</span> <span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>BASE_URL</span><span class=p>,</span>
+  <span class=nx>routes</span><span class=o>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/&#39;</span><span class=p>,</span>
+      <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;home&#39;</span><span class=p>,</span>
+      <span class=nx>component</span><span class=o>:</span> <span class=nx>Home</span>
+    <span class=p>},</span> <span class=p>{</span>
+      <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/about&#39;</span><span class=p>,</span>
+      <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;about&#39;</span><span class=p>,</span>
+      <span class=nx>component</span><span class=o>:</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=kr>import</span><span class=p>(</span><span class=s1>&#39;./views/About.vue&#39;</span><span class=p>)</span>
+    <span class=p>}</span>
+  <span class=p>]</span>
+<span class=p>})</span>
+
+<span class=c1>// 使用Router
+</span><span class=c1></span><span class=nx>Vue</span><span class=p>.</span><span class=nx>use</span><span class=p>(</span><span class=nx>Router</span><span class=p>)</span>
+
+<span class=k>new</span> <span class=nx>Vue</span><span class=p>({</span>
+  <span class=nx>router</span><span class=o>:</span> <span class=nx>router</span><span class=p>,</span>
+  <span class=nx>render</span><span class=o>:</span> <span class=kd>function</span><span class=p>(</span><span class=nx>h</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=nx>h</span><span class=p>(</span><span class=nx>App</span><span class=p>)</span> <span class=p>}</span>
+<span class=p>}).</span><span class=nx>$mount</span><span class=p>(</span><span class=s1>&#39;#app&#39;</span><span class=p>)</span>
+</code></pre></div><p>写在template中</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>template</span><span class=p>&gt;</span>
+  <span class=c>&lt;!-- 使用路由名称跳转 --&gt;</span>
+  <span class=p>&lt;</span><span class=nt>router-link</span> <span class=na>:to</span><span class=o>=</span><span class=s>&#34;{name:&#39;home&#39;}&#34;</span><span class=p>&gt;</span>主页<span class=p>&lt;/</span><span class=nt>router-link</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>router-link</span> <span class=na>:to</span><span class=o>=</span><span class=s>&#34;{name:&#39;about&#39;}&#34;</span><span class=p>&gt;</span>关于<span class=p>&lt;/</span><span class=nt>router-link</span><span class=p>&gt;</span>
+
+  <span class=c>&lt;!-- 直接指定跳转路径 --&gt;</span>
+  <span class=p>&lt;</span><span class=nt>router-link</span> <span class=na>to</span><span class=o>=</span><span class=s>&#34;/&#34;</span><span class=p>&gt;</span>主页<span class=p>&lt;/</span><span class=nt>router-link</span><span class=p>&gt;</span>
+<span class=p>&lt;/</span><span class=nt>template</span><span class=p>&gt;</span>
+</code></pre></div><p>也可将Router配置抽离到单独的js文件中</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kr>export</span> <span class=k>default</span> <span class=k>new</span> <span class=nx>VueRouter</span><span class=p>({</span>
+  <span class=nx>mode</span><span class=o>:</span> <span class=s1>&#39;history&#39;</span><span class=p>,</span>
+  <span class=nx>base</span><span class=o>:</span> <span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>BASE_URL</span><span class=p>,</span>
+  <span class=nx>routes</span><span class=o>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=c1>// 路径
+</span><span class=c1></span>      <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/&#39;</span><span class=p>,</span>
+      <span class=c1>// 名称
+</span><span class=c1></span>      <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;home&#39;</span><span class=p>,</span>
+      <span class=c1>// 挂载的组件
+</span><span class=c1></span>      <span class=nx>component</span><span class=o>:</span> <span class=nx>Home</span>
+    <span class=p>},</span> <span class=p>{</span>
+      <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/about&#39;</span><span class=p>,</span>
+      <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;about&#39;</span><span class=p>,</span>
+      <span class=c1>// 懒加载
+</span><span class=c1></span>      <span class=nx>component</span><span class=o>:</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=kr>import</span><span class=p>(</span><span class=s1>&#39;./views/About.vue&#39;</span><span class=p>),</span>
+      <span class=c1>// 子路由
+</span><span class=c1></span>      <span class=nx>children</span><span class=o>:</span> <span class=p>[{</span>
+        <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;concat&#39;</span><span class=p>,</span>
+        <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;concat&#39;</span><span class=p>,</span>
+        <span class=nx>component</span><span class=o>:</span> <span class=nx>Concat</span>
+      <span class=p>},{</span>
+        <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;guide&#39;</span><span class=p>,</span>
+        <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;guide&#39;</span><span class=p>,</span>
+        <span class=nx>component</span><span class=o>:</span> <span class=nx>Guide</span><span class=p>,</span>
+        <span class=c1>// 子路由下的子路由
+</span><span class=c1></span>        <span class=nx>children</span><span class=o>:</span> <span class=p>[</span>
+          <span class=c1>// ...
+</span><span class=c1></span>        <span class=p>]</span>
+      <span class=p>}],</span>
+      <span class=nx>redirect</span><span class=o>:</span> <span class=p>{</span><span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;concat&#39;</span><span class=p>}</span>
+    <span class=p>},</span> <span class=p>{</span>
+      <span class=c1>// 匹配所有(上面没有匹配到的)
+</span><span class=c1></span>      <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;*&#39;</span><span class=p>,</span>
+      <span class=c1>// 重定向
+</span><span class=c1></span>      <span class=nx>redirect</span><span class=o>:</span> <span class=s1>&#39;/error/notfound&#39;</span>
+    <span class=p>}</span>
+  <span class=p>]</span>
+<span class=p>})</span>
+</code></pre></div><h2 id=动态路由匹配>动态路由匹配</h2><p>使用<code>:</code> 标记路径参数，当匹配到一个路由时，参数值会被设置到<code>this.$route.params</code>，以便在组件内使用。</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kr>const</span> <span class=nx>router</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Router</span><span class=p>({</span>
+  <span class=nx>routes</span><span class=o>:</span> <span class=p>[{</span>
+    <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/user/:id&#39;</span><span class=p>,</span>
+    <span class=nx>component</span><span class=o>:</span> <span class=nx>User</span>
+  <span class=p>}]</span>
+<span class=p>})</span>
+</code></pre></div><p>可以设置多段路径参数</p><table><thead><tr><th style=text-align:left>路由设置</th><th style=text-align:left>匹配路径</th><th style=text-align:left>Params</th></tr></thead><tbody><tr><td style=text-align:left>/user/:id</td><td style=text-align:left>/user/233</td><td style=text-align:left>{id: &lsquo;233&rsquo;}</td></tr><tr><td style=text-align:left>/user/:id/name/:name</td><td style=text-align:left>/user/233/name/ilirus</td><td style=text-align:left>{id: &lsquo;233&rsquo;, name: &lsquo;ilirus&rsquo;}</td></tr></tbody></table><p><strong>当使用路径参数时, 例如<code>/user/233</code>到<code>/user/450</code>, 原来的组件实例会被复用, 这导致组件的生命周期钩子不会被调用</strong></p><p>所以应该对<code>$router</code>监测变化(watch)，或者使用导航守卫</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=nx>watch</span><span class=o>:</span> <span class=p>{</span>
+  <span class=s1>&#39;$route&#39;</span> <span class=p>(</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// ...
+</span><span class=c1></span>  <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=nx>beforeRouteUpdate</span><span class=p>(</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></div><h2 id=高级匹配模式>高级匹配模式</h2><p><code>vue-router</code>使用<code>path-to-regexp</code>作为路径匹配引擎，所以支持更高级的匹配模式。</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kr>const</span> <span class=nx>router</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Router</span><span class=p>({</span>
+  <span class=nx>routes</span><span class=o>:</span> <span class=p>[</span>
+    <span class=c1>// 使用?来将参数定义为可选项
+</span><span class=c1></span>    <span class=p>{</span><span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/optional/:para?&#39;</span><span class=p>},</span>
+    <span class=p>{</span><span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/optional/(:para/)?name&#39;</span><span class=p>}</span>
+    <span class=c1>// 使用正则来实现仅匹配数字
+</span><span class=c1></span>    <span class=p>{</span><span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/number/:id(\\d+)&#39;</span><span class=p>}</span>
+  <span class=p>]</span>
+<span class=p>})</span>
+</code></pre></div><h2 id=在javascript中进行路由跳转>在JavaScript中进行路由跳转</h2><h3 id=routerpush>router.push()</h3><p><code>router.push(location, onComplete?, onAbort?)</code><br>此方法会向history 栈添加一个新记录, 所以当用户点击后退按钮时，会返回到之前的URL</p><p>此方法接收一个字符串路径，或者一个描述地址的对象作为参数</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// 字符串
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=s1>&#39;/user&#39;</span><span class=p>)</span>
+
+<span class=c1>// 对象
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span><span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/user&#39;</span><span class=p>})</span>
+<span class=nx>router</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span><span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;user&#39;</span><span class=p>})</span>
+
+<span class=c1>// 带参数
+</span><span class=c1>// -&gt; /user/233
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span><span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;user&#39;</span><span class=p>,</span> <span class=nx>params</span><span class=o>:</span> <span class=p>{</span><span class=nx>id</span><span class=o>:</span> <span class=s1>&#39;233&#39;</span><span class=p>}})</span>
+<span class=c1>// -&gt; /user?id=233
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span><span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;user&#39;</span><span class=p>,</span> <span class=nx>query</span><span class=o>:</span> <span class=p>{</span><span class=nx>id</span><span class=o>:</span> <span class=s1>&#39;233&#39;</span><span class=p>}})</span>
+
+<span class=c1>// 如果提供了path, 那么param会被忽略, query则不会
+</span><span class=c1>// -&gt; /user/233
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span><span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/user/233&#39;</span><span class=p>})</span>
+<span class=c1>// -&gt; /user
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span><span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/user&#39;</span><span class=p>,</span> <span class=nx>params</span><span class=o>:</span> <span class=p>{</span><span class=nx>id</span><span class=o>:</span> <span class=s1>&#39;233&#39;</span><span class=p>}})</span>
+<span class=c1>// -&gt; /user?id=233
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span><span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;user&#39;</span><span class=p>,</span> <span class=nx>params</span><span class=o>:</span> <span class=p>{</span><span class=nx>id</span><span class=o>:</span> <span class=s1>&#39;233&#39;</span><span class=p>}})</span>
+</code></pre></div><p><code>onComplete</code>和<code>onAbort</code> 回调函数会在导航成功完成(在所有的异步钩子被解析之后) 或者终止(导航到相同的路由、或在当前导航完成之前导航到另一个不同的路由) 的时候进行调用</p><h3 id=routerreplace>router.replace()</h3><p><code>router.replace(location, onComplete?, onAbort?)</code><br>此方法会替换掉当前的history 记录, 所以当用户点击后退按钮时，不会返回到之前的URL</p><p>其余用法同<code>router.push()</code>方法</p><h3 id=routergo>router.go()</h3><p><code>router.go(n)</code><br>此方法接收一个整数作为参数，意为在history 记录中前进多少步</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// 前进一步
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>go</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+<span class=c1>// 后退一步
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>go</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>)</span>
+<span class=c1>// 前进十步, 如果记录不足, 则不会跳转
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>go</span><span class=p>(</span><span class=mi>10</span><span class=p>)</span>
+</code></pre></div><h2 id=视图命名>视图命名</h2><p>可以在界面中拥有多个单独命名的视图，而不是只有一个单独的出口。</p><p>如果 router-view 没有设置名字，那么默认为 default。</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>router-view</span><span class=p>&gt;&lt;/</span><span class=nt>router-view</span><span class=p>&gt;</span>
+<span class=p>&lt;</span><span class=nt>router-view</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;main&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>router-view</span><span class=p>&gt;</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kr>const</span> <span class=nx>router</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Router</span> <span class=p>({</span>
+  <span class=nx>routes</span><span class=o>:</span> <span class=p>[{</span>
+    <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/&#39;</span><span class=p>,</span>
+    <span class=nx>components</span><span class=o>:</span> <span class=p>{</span>
+      <span class=k>default</span><span class=o>:</span> <span class=nx>Nav</span><span class=p>,</span>
+      <span class=nx>main</span><span class=o>:</span> <span class=nx>Main</span>
+    <span class=p>}</span>
+  <span class=p>}]</span>
+<span class=p>})</span>
+</code></pre></div><h1 id=导航守卫>导航守卫</h1><blockquote><p>参数或查询的改变并不会触发 进入/离开 的导航守卫。可以通过观察 $route 对象来应对这些变化，或使用 beforeRouteUpdate 的组件内守卫。</p></blockquote><h2 id=全局前置守卫>全局前置守卫</h2><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kr>const</span> <span class=nx>router</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Router</span><span class=p>({</span> <span class=p>...</span> <span class=p>})</span>
+
+<span class=c1>// 全局前置守卫
+</span><span class=c1>// to: 即将要进入的目标路由
+</span><span class=c1>// from: 正要离开的路由
+</span><span class=c1>// next: 放行, 不调用next方法则不会进入目标路由, 根据参数的不同, 效果也不同
+</span><span class=c1>// next(): 进行管道中的下一个钩子, 如果全部钩子执行完了, 则导航的状态就是confirmed
+</span><span class=c1>// next(false): 中断当前的导航, 如果浏览器的URL改变了, 会重置到from路由对应的地址
+</span><span class=c1>// next(&#39;/&#39;) | next({path: &#39;/&#39;}): 跳转到另一个地址, 会使当前的导航被中断, 然后进行一个新的导航
+</span><span class=c1>// next(Error): 导航会被终止, 且会触发router.onError()
+</span><span class=c1></span><span class=nx>router</span><span class=p>.</span><span class=nx>beforeEach</span><span class=p>((</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>})</span>
+</code></pre></div><p>当一个导航触发时，全局前置守卫按照创建顺序调用。守卫是异步解析执行，此时导航在所有守卫<code>resolve</code>完之前会一直处于等待中。</p><h2 id=全局后置钩子>全局后置钩子</h2><p>此方法不接收<code>next()</code>函数也不会改变导航本身</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kr>const</span> <span class=nx>router</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Router</span><span class=p>({</span> <span class=p>...</span> <span class=p>})</span>
+
+<span class=nx>router</span><span class=p>.</span><span class=nx>afterEach</span><span class=p>((</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>})</span>
+</code></pre></div><h2 id=路由独享守卫>路由独享守卫</h2><p>用法与全局前置守卫相同</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kr>const</span> <span class=nx>router</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Router</span><span class=p>({</span>
+  <span class=nx>routes</span><span class=o>:</span> <span class=p>[{</span>
+    <span class=nx>path</span><span class=o>:</span> <span class=s1>&#39;/home&#39;</span><span class=p>,</span>
+    <span class=nx>component</span><span class=o>:</span> <span class=nx>Home</span><span class=p>,</span>
+    <span class=nx>beforeEnter</span><span class=o>:</span> <span class=p>(</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+      <span class=c1>// ...
+</span><span class=c1></span>    <span class=p>}</span>
+  <span class=p>}]</span>
+<span class=p>})</span>
+</code></pre></div><h2 id=组件内的守卫>组件内的守卫</h2><p>可以在路由组件内直接定义这些路由导航守卫</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// 在渲染该组件的对应路由被 confirm 前调用
+</span><span class=c1>// 不能 获取组件实例 this, 因为当守卫执行前，组件实例还没被创建
+</span><span class=c1></span><span class=nx>beforeRouteEnter</span><span class=p>(</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>},</span>
+
+<span class=c1>// 在当前路由改变，但是该组件被复用时调用
+</span><span class=c1>// 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
+</span><span class=c1>// 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
+</span><span class=c1>// 可以访问组件实例 this
+</span><span class=c1></span><span class=nx>beforeRouteUpdate</span><span class=p>(</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>},</span>
+
+<span class=c1>// 导航离开该组件的对应路由时调用
+</span><span class=c1>// 可以访问组件实例 this
+</span><span class=c1>// 通常用来阻止用户在还未保存修改前突然离开
+</span><span class=c1>// 该导航可以通过 next(false) 来取消
+</span><span class=c1></span><span class=nx>beforeRouteLeave</span><span class=p>(</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></div><p><code>beforeRouteEnter</code> 不能访问到this, 但可以通过给<code>next()</code>传递回调来访问组件实例, 且只有<code>beforeRouteEnter</code>方法支持给<code>next()</code>函数传递回调</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=nx>beforeRouteEnter</span><span class=p>(</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>{</span>
+  <span class=nx>next</span><span class=p>(</span><span class=nx>vm</span> <span class=p>=&gt;</span> <span class=p>{</span>
+    <span class=c1>// ...
+</span><span class=c1></span>  <span class=p>})</span>
+<span class=p>},</span>
+</code></pre></div><h1 id=过渡动效>过渡动效</h1><p>使用<code>transition</code>组件给<code>router-view</code>添加一些过渡效果</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>transition</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;slide&#34;</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>router-view</span><span class=p>&gt;&lt;/</span><span class=nt>router-view</span><span class=p>&gt;</span>
+<span class=p>&lt;/</span><span class=nt>transition</span><span class=p>&gt;</span>
+</code></pre></div><p>也可以动态设置过渡效果</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>transition</span> <span class=na>:name</span><span class=o>=</span><span class=s>&#34;transitionType&#34;</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>router-view</span><span class=p>&gt;&lt;/</span><span class=nt>router-view</span><span class=p>&gt;</span>
+<span class=p>&lt;/</span><span class=nt>transition</span><span class=p>&gt;</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=nx>watch</span><span class=o>:</span> <span class=p>{</span>
+  <span class=s1>&#39;$route&#39;</span> <span class=p>(</span><span class=nx>to</span><span class=p>,</span> <span class=nx>from</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kr>const</span> <span class=nx>toDepth</span> <span class=o>=</span> <span class=nx>to</span><span class=p>.</span><span class=nx>path</span><span class=p>.</span><span class=nx>split</span><span class=p>(</span><span class=s1>&#39;/&#39;</span><span class=p>).</span><span class=nx>length</span>
+    <span class=kr>const</span> <span class=nx>fromDepth</span> <span class=o>=</span> <span class=nx>from</span><span class=p>.</span><span class=nx>path</span><span class=p>.</span><span class=nx>split</span><span class=p>(</span><span class=s1>&#39;/&#39;</span><span class=p>).</span><span class=nx>length</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>transitionType</span> <span class=o>=</span> <span class=nx>toDepth</span> <span class=o>&lt;</span> <span class=nx>fromDepth</span> <span class=o>?</span> <span class=s1>&#39;slide-right&#39;</span> <span class=o>:</span> <span class=s1>&#39;slide-left&#39;</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></section><footer class=article-footer><section class=article-tags><a href=/tags/javascript/>JavaScript</a>
+<a href=/tags/vue/>Vue</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper><h2 class=section-title>相关文章</h2><div class=related-contents><div class="flex article-list--tile"><article><a href=/p/%E4%BD%BF%E7%94%A8vue-cli%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/><div class=article-details><h2 class=article-title>使用Vue-cli搭建Vue项目</h2></div></a></article><article><a href=/p/webpack%E4%B8%ADcss%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%A4%84%E7%90%86/><div class=article-details><h2 class=article-title>Webpack中CSS样式的处理</h2></div></a></article><article><a href=/p/webpack%E9%85%8D%E7%BD%AEhtml-template/><div class=article-details><h2 class=article-title>Webpack配置HTML Template</h2></div></a></article><article><a href=/p/webpack%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/><div class=article-details><h2 class=article-title>Webpack的安装与配置</h2></div></a></article><article><a href=/p/es6%E4%B8%AD%E7%9A%84%E5%B0%BE%E9%80%92%E5%BD%92/><div class=article-details><h2 class=article-title>ES6中的尾递归</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//hugo-theme-stack.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener('onColorSchemeChange',a=>{DISQUS&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2021 Ilirus</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.3.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script></body></html>

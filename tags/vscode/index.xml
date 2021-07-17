@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on Ilirus</title><link>https://chaosalphard.github.io/tags/vscode/</link><description>Recent content in VSCode on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 03 Oct 2019 20:36:06 +0000</lastBuildDate><atom:link href="https://chaosalphard.github.io/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>VSCode配置Springboot开发环境</title><link>https://chaosalphard.github.io/p/vscode%E9%85%8D%E7%BD%AEspringboot%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><pubDate>Thu, 03 Oct 2019 20:36:06 +0000</pubDate><guid>https://chaosalphard.github.io/p/vscode%E9%85%8D%E7%BD%AEspringboot%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid><description>虽说Springboot的首选开发IDE是IntelliJ IDEA，然而对于老爷机来说IDEA太过庞大，对于因为某些原因而无法使用主力开发电脑时，使用VSCode来开发Springboot也不失为一个不错的选择。
+安装开发扩展 在商店中搜索Java Extension Pack 扩展，并安装。
+这是一个扩展包，VSCode 会自动安装关联的扩展：
+Cloudfoundry Manifest YML Support Concourse CI Pipeline Editor Debugger for Java Java Dependency Viewer Java Test Runner Language Support for Java(TM) by Red Hat Maven for Java 在商店中搜索Spring Boot Extension Pack 扩展，并安装。
+这是一个扩展包，VSCode 会自动安装关联的扩展：
+Spring Boot Dashboard Spring Boot Tools Spring Initializr Java Support Visual Studio IntelliCode 配置Java与Maven路径 打开VSCode的设置文件(setting.json)， 写入以下配置
+{ // java路径 &amp;#34;java.home&amp;#34;: &amp;#34;C:/Software/java11/jdk&amp;#34;, // maven配置文件路径 &amp;#34;java.</description></item></channel></rss>

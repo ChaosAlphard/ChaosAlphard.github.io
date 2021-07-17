@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据库 on Ilirus</title><link>https://chaosalphard.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link><description>Recent content in 数据库 on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 05 Oct 2019 14:00:50 +0000</lastBuildDate><atom:link href="https://chaosalphard.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml"/><item><title>数据库存储过程</title><link>https://chaosalphard.github.io/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link><pubDate>Sat, 05 Oct 2019 14:00:50 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</guid><description>简单理解存储过程 存储过程是什么 存储过程(Stored Procedure) 是在数据库系统中，一组为了完成特定功能的SQL 语句集，它存储在数据库中，一次编译后永久有效，用户通过调用存储过程并传递参数来执行它。
+存储过程是用于特定操作的pl/sql语句块。 存储过程是预编译过的，经优化后存储在sql内存中，使用时无需再次编译，提高了使用效率。 存储过程的代码直接存放在数据库中，一般直接通过存储过程的名称调用，减少了网络流量，加快了系统执行效率。 存储过程与函数的区别 一般来说，存储过程实现的功能要复杂一点，而函数的实现的功能针对性比较强。 对于存储过程来说可以返回参数(output)，而函数只能返回值或者表对象。 存储过程一般是作为一个独立的部分来执行，而函数可以作为查询语句的一个部分来调用，由于函数可以返回一个表对象，因此它可以在查询语句中位于FROM 关键字的后面。 存储过程的创建与调用 创建 CREATE[ORREPLACE]PROCEDUREprocedure_name(parameter1[model]datatype1,parameter2[model]datatype2..)IS[AS]BEGIN&amp;lt;PL/SQL&amp;gt;;END[procedure_name]; parameter用于指定参数，model用于指定参数模式，datatype用于指定参数类型。 定义存储过程的参数时，只能指定数据类型，不能指定数据长度。 IS/AS用于开始PL/SQL代码块。 创建存储过程时，既可以指定参数也可以不指定任何参数。 例如
+createprocedurepd_select_student_by_name(s_namenvarchar(20))isbeginselect*fromstudentwherestu_name=s_name;end;编译 ALTERPROCEDUREprocedure_nameCOMPILE调用 executeprocedure_name或者
+DECLAREparam1number;param2VARCHAR2(10):=&amp;#39;~Hello~&amp;#39;;BEGINprocedure_name(param1,param2);END;删除 DROPPROCEDUREprocedure_name;</description></item><item><title>MySQL数据库备份与恢复</title><link>https://chaosalphard.github.io/p/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/</link><pubDate>Sat, 11 Aug 2018 21:18:01 +0000</pubDate><guid>https://chaosalphard.github.io/p/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/</guid><description>使用mysqldump/source指令备份/恢复数据库 备份数据 用法:
+mysqldump -u [用户名] -p [options] &amp;gt; [输出文件名] 示例
+mysqldump -u root -p &amp;gt; D:\SQLBak\Data.sql mysqldump常用选项 &amp;ndash;databases 指定需要备份的数据库名称
+用法: mysqldump -u [用户名] -p --databases [dbName] &amp;gt; [输出文件名] &amp;ndash;all-databases 备份所有的数据库
+用法: mysqldump -u [用户名] -p --all-databases &amp;gt; [输出文件名] &amp;ndash;tab[=dir_name] 不使用此选项，mysqldump仅输出一个sql文件。
+使用此选项，mysqldump会对每一个要备份的表输出两个文件，sql文件保存创建表时的sql语句，txt文件储存表中的数据。
+dirname即为sql和txt文件输出的路径。
+&amp;ndash;add-drop-table 此选项会在每一个表前面加上drop table if exists 语句。
+&amp;ndash;add-locks 此选项会在insert语句前面加上lock table 语句。
+&amp;ndash;skip-comments 此选项会去掉输出文件中的注释
+恢复数据 用法</description></item></channel></rss>

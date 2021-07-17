@@ -1,0 +1,542 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="建立项目 父工程的创建 IDEA: Create New Project -&amp;gt; Maven -&amp;gt; 输入groupid和artifactId -&amp;gt; 完成
+之后在IDEA设置中还有几个地方要设置:
+ Build选项中的Compiler选项中的Annotation Processing目录中，在Enable annotation processing选项前打勾 Build选项中的Compiler选项中的Java Compiler目录中，将Target bytecode version 选为8 (可选)Editor选项中的File Types目录中，将*.iml;*.idea; 添加到Ignore files and patterns中，这是用于在IDEA资源管理器中隐藏对应后缀的文件  修改pom.xml文件，在version下添加&amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt;
+&amp;lt;groupId&amp;gt;com.ilirus.springcloud&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;irscloud&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; &amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt; 修改properties
+&amp;lt;properties&amp;gt; &amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.8&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.8&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;junit.version&amp;gt;4.12&amp;lt;/junit.version&amp;gt; &amp;lt;log4j.version&amp;gt;1.2.17&amp;lt;/log4j.version&amp;gt; &amp;lt;lombok.version&amp;gt;1.16.18&amp;lt;/lombok.version&amp;gt; &amp;lt;mysql.version&amp;gt;8.0.14&amp;lt;/mysql.version&amp;gt; &amp;lt;druid.version&amp;gt;1.1.16&amp;lt;/druid.version&amp;gt; &amp;lt;mybatis.spring.boot.version&amp;gt;2.1.2&amp;lt;/mybatis.spring.boot.version&amp;gt; &amp;lt;/properties&amp;gt; 修改dependencies
+&amp;lt;dependencyManagement&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;!-- springboot 2.2.2 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-dependencies&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.2.RELEASE&amp;lt;/version&amp;gt; &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt; &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- spring cloud hoxton.SR1 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;Hoxton.SR1&amp;lt;/version&amp;gt; &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt; &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!"><title>[笔记]SpringCloud学习01: 项目的搭建</title><link rel=canonical href=https://chaosalphard.github.io/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A001-%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%90%AD%E5%BB%BA/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="[笔记]SpringCloud学习01: 项目的搭建"><meta property="og:description" content="建立项目 父工程的创建 IDEA: Create New Project -&amp;gt; Maven -&amp;gt; 输入groupid和artifactId -&amp;gt; 完成
+之后在IDEA设置中还有几个地方要设置:
+ Build选项中的Compiler选项中的Annotation Processing目录中，在Enable annotation processing选项前打勾 Build选项中的Compiler选项中的Java Compiler目录中，将Target bytecode version 选为8 (可选)Editor选项中的File Types目录中，将*.iml;*.idea; 添加到Ignore files and patterns中，这是用于在IDEA资源管理器中隐藏对应后缀的文件  修改pom.xml文件，在version下添加&amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt;
+&amp;lt;groupId&amp;gt;com.ilirus.springcloud&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;irscloud&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; &amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt; 修改properties
+&amp;lt;properties&amp;gt; &amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.8&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.8&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;junit.version&amp;gt;4.12&amp;lt;/junit.version&amp;gt; &amp;lt;log4j.version&amp;gt;1.2.17&amp;lt;/log4j.version&amp;gt; &amp;lt;lombok.version&amp;gt;1.16.18&amp;lt;/lombok.version&amp;gt; &amp;lt;mysql.version&amp;gt;8.0.14&amp;lt;/mysql.version&amp;gt; &amp;lt;druid.version&amp;gt;1.1.16&amp;lt;/druid.version&amp;gt; &amp;lt;mybatis.spring.boot.version&amp;gt;2.1.2&amp;lt;/mybatis.spring.boot.version&amp;gt; &amp;lt;/properties&amp;gt; 修改dependencies
+&amp;lt;dependencyManagement&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;!-- springboot 2.2.2 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-dependencies&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.2.RELEASE&amp;lt;/version&amp;gt; &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt; &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- spring cloud hoxton.SR1 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;Hoxton.SR1&amp;lt;/version&amp;gt; &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt; &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!"><meta property="og:url" content="https://chaosalphard.github.io/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A001-%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%90%AD%E5%BB%BA/"><meta property="og:site_name" content="Ilirus"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Java"><meta property="article:tag" content="SpringCloud"><meta property="article:published_time" content="2020-03-12T00:55:33+00:00"><meta property="article:modified_time" content="2020-03-12T00:55:33+00:00"><meta name=twitter:title content="[笔记]SpringCloud学习01: 项目的搭建"><meta name=twitter:description content="建立项目 父工程的创建 IDEA: Create New Project -&amp;gt; Maven -&amp;gt; 输入groupid和artifactId -&amp;gt; 完成
+之后在IDEA设置中还有几个地方要设置:
+ Build选项中的Compiler选项中的Annotation Processing目录中，在Enable annotation processing选项前打勾 Build选项中的Compiler选项中的Java Compiler目录中，将Target bytecode version 选为8 (可选)Editor选项中的File Types目录中，将*.iml;*.idea; 添加到Ignore files and patterns中，这是用于在IDEA资源管理器中隐藏对应后缀的文件  修改pom.xml文件，在version下添加&amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt;
+&amp;lt;groupId&amp;gt;com.ilirus.springcloud&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;irscloud&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; &amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt; 修改properties
+&amp;lt;properties&amp;gt; &amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.8&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.8&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;junit.version&amp;gt;4.12&amp;lt;/junit.version&amp;gt; &amp;lt;log4j.version&amp;gt;1.2.17&amp;lt;/log4j.version&amp;gt; &amp;lt;lombok.version&amp;gt;1.16.18&amp;lt;/lombok.version&amp;gt; &amp;lt;mysql.version&amp;gt;8.0.14&amp;lt;/mysql.version&amp;gt; &amp;lt;druid.version&amp;gt;1.1.16&amp;lt;/druid.version&amp;gt; &amp;lt;mybatis.spring.boot.version&amp;gt;2.1.2&amp;lt;/mybatis.spring.boot.version&amp;gt; &amp;lt;/properties&amp;gt; 修改dependencies
+&amp;lt;dependencyManagement&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;!-- springboot 2.2.2 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-dependencies&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.2.RELEASE&amp;lt;/version&amp;gt; &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt; &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- spring cloud hoxton.SR1 --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;Hoxton.SR1&amp;lt;/version&amp;gt; &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt; &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!"></head><body><script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.body.dataset.scheme='dark':document.body.dataset.scheme='light'})()</script><div class="container main-container flex on-phone--column extended article-page with-toolbar"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hu3efe4cd0dfb29873d1b0d65561d00585_584028_300x0_resize_box_2.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+<span class=emoji>🌌</span></figure><h1 class=site-name><a href=https://chaosalphard.github.io>Ilirus</a></h1><h2 class=site-description>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>暗色模式</span></li></ol></aside><main class="main full-width"><div id=article-toolbar><a href=https://chaosalphard.github.io class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E7%BC%96%E7%A8%8B/>编程</a>
+<a href=/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/>微服务</a>
+<a href=/categories/springcloud/>SpringCloud</a></header><h2 class=article-title><a href=/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A001-%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%90%AD%E5%BB%BA/>[笔记]SpringCloud学习01: 项目的搭建</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>Mar 12, 2020</time></footer></div></header><section class=article-content><h1 id=建立项目>建立项目</h1><h2 id=父工程的创建>父工程的创建</h2><p>IDEA: Create New Project -> Maven -> 输入groupid和artifactId -> 完成</p><p>之后在IDEA设置中还有几个地方要设置:</p><ul><li>Build选项中的Compiler选项中的<code>Annotation Processing</code>目录中，在<code>Enable annotation processing</code>选项前打勾</li><li>Build选项中的Compiler选项中的<code>Java Compiler</code>目录中，将<code>Target bytecode version</code> 选为<code>8</code></li><li>(可选)Editor选项中的<code>File Types</code>目录中，将<code>*.iml;*.idea;</code> 添加到<code>Ignore files and patterns</code>中，这是用于在IDEA资源管理器中隐藏对应后缀的文件</li></ul><p>修改<code>pom.xml</code>文件，在<code>version</code>下添加<code>&lt;packaging>pom&lt;/packaging></code></p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml>  <span class=nt>&lt;groupId&gt;</span>com.ilirus.springcloud<span class=nt>&lt;/groupId&gt;</span>
+  <span class=nt>&lt;artifactId&gt;</span>irscloud<span class=nt>&lt;/artifactId&gt;</span>
+  <span class=nt>&lt;version&gt;</span>1.0-SNAPSHOT<span class=nt>&lt;/version&gt;</span>
+  <span class=nt>&lt;packaging&gt;</span>pom<span class=nt>&lt;/packaging&gt;</span>
+</code></pre></div><p>修改<code>properties</code></p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;properties&gt;</span>
+  <span class=nt>&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class=nt>&lt;/project.build.sourceEncoding&gt;</span>
+  <span class=nt>&lt;maven.compiler.source&gt;</span>1.8<span class=nt>&lt;/maven.compiler.source&gt;</span>
+  <span class=nt>&lt;maven.compiler.target&gt;</span>1.8<span class=nt>&lt;/maven.compiler.target&gt;</span>
+  <span class=nt>&lt;junit.version&gt;</span>4.12<span class=nt>&lt;/junit.version&gt;</span>
+  <span class=nt>&lt;log4j.version&gt;</span>1.2.17<span class=nt>&lt;/log4j.version&gt;</span>
+  <span class=nt>&lt;lombok.version&gt;</span>1.16.18<span class=nt>&lt;/lombok.version&gt;</span>
+  <span class=nt>&lt;mysql.version&gt;</span>8.0.14<span class=nt>&lt;/mysql.version&gt;</span>
+  <span class=nt>&lt;druid.version&gt;</span>1.1.16<span class=nt>&lt;/druid.version&gt;</span>
+  <span class=nt>&lt;mybatis.spring.boot.version&gt;</span>2.1.2<span class=nt>&lt;/mybatis.spring.boot.version&gt;</span>
+<span class=nt>&lt;/properties&gt;</span>
+</code></pre></div><p>修改<code>dependencies</code></p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;dependencyManagement&gt;</span>
+  <span class=nt>&lt;dependencies&gt;</span>
+    <span class=c>&lt;!-- springboot 2.2.2 --&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>spring-boot-dependencies<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>2.2.2.RELEASE<span class=nt>&lt;/version&gt;</span>
+      <span class=nt>&lt;type&gt;</span>pom<span class=nt>&lt;/type&gt;</span>
+      <span class=nt>&lt;scope&gt;</span>import<span class=nt>&lt;/scope&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=c>&lt;!-- spring cloud hoxton.SR1 --&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>org.springframework.cloud<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>spring-cloud-dependencies<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>Hoxton.SR1<span class=nt>&lt;/version&gt;</span>
+      <span class=nt>&lt;type&gt;</span>pom<span class=nt>&lt;/type&gt;</span>
+      <span class=nt>&lt;scope&gt;</span>import<span class=nt>&lt;/scope&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=c>&lt;!-- spring cloud alibaba 2.1.0.RELEASE --&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>com.alibaba.cloud<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>spring-cloud-alibaba-dependencies<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>2.1.0.RELEASE<span class=nt>&lt;/version&gt;</span>
+      <span class=nt>&lt;type&gt;</span>pom<span class=nt>&lt;/type&gt;</span>
+      <span class=nt>&lt;scope&gt;</span>import<span class=nt>&lt;/scope&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=c>&lt;!-- mysql --&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>mysql<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>mysql-connector-java<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>${mysql.version}<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=c>&lt;!-- alibaba --&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>com.alibaba<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>druid<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>${druid.version}<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=c>&lt;!-- mybatis --&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>org.mybatis.spring.boot<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>mybatis-spring-boot-starter<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>${mybatis.spring.boot.version}<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=c>&lt;!-- junit --&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>junit<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>junit<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>${junit.version}<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=c>&lt;!-- log4j --&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>log4j<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>log4j<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>${log4j.version}<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=c>&lt;!-- lombok --&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>org.projectlombok<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>lombok<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>${lombok.version}<span class=nt>&lt;/version&gt;</span>
+      <span class=nt>&lt;optional&gt;</span>true<span class=nt>&lt;/optional&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;/dependencies&gt;</span>
+<span class=nt>&lt;/dependencyManagement&gt;</span>
+</code></pre></div><p>修改<code>build</code></p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;build&gt;</span>
+  <span class=nt>&lt;plugins&gt;</span>
+    <span class=nt>&lt;plugin&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>spring-boot-maven-plugin<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;configuration&gt;</span>
+        <span class=nt>&lt;fork&gt;</span>true<span class=nt>&lt;/fork&gt;</span>
+        <span class=nt>&lt;addResources&gt;</span>true<span class=nt>&lt;/addResources&gt;</span>
+      <span class=nt>&lt;/configuration&gt;</span>
+    <span class=nt>&lt;/plugin&gt;</span>
+  <span class=nt>&lt;/plugins&gt;</span>
+<span class=nt>&lt;/build&gt;</span>
+</code></pre></div><p>最终<code>pom.xml</code></p><details><summary>点击展开</summary>```xml
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemalocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"><modelversion>4.0.0</modelversion><p><groupid>com.ilirus.springcloud</groupid>
+<artifactid>irscloud</artifactid>
+<version>1.0-SNAPSHOT</version>
+<packaging>pom</packaging></p><properties><project.build.sourceencoding>UTF-8</project.build.sourceencoding>
+<maven.compiler.source>1.8</maven.compiler.source>
+<maven.compiler.target>1.8</maven.compiler.target>
+<junit.version>4.12</junit.version>
+<log4j.version>1.2.17</log4j.version>
+<lombok.version>1.16.18</lombok.version>
+<mysql.version>8.0.14</mysql.version>
+<druid.version>1.1.16</druid.version>
+<mybatis.spring.boot.version>2.1.2</mybatis.spring.boot.version></properties>
+<dependencymanagement><dependencies><dependency><groupid>org.springframework.boot</groupid>
+<artifactid>spring-boot-dependencies</artifactid>
+<version>2.2.2.RELEASE</version>
+<type>pom</type>
+<scope>import</scope></dependency>
+<dependency><groupid>org.springframework.cloud</groupid>
+<artifactid>spring-cloud-dependencies</artifactid>
+<version>Hoxton.SR1</version>
+<type>pom</type>
+<scope>import</scope></dependency>
+<dependency><groupid>com.alibaba.cloud</groupid>
+<artifactid>spring-cloud-alibaba-dependencies</artifactid>
+<version>2.1.0.RELEASE</version>
+<type>pom</type>
+<scope>import</scope></dependency>
+<dependency><groupid>mysql</groupid>
+<artifactid>mysql-connector-java</artifactid>
+<version>${mysql.version}</version></dependency>
+<dependency><groupid>com.alibaba</groupid>
+<artifactid>druid</artifactid>
+<version>${druid.version}</version></dependency>
+<dependency><groupid>org.mybatis.spring.boot</groupid>
+<artifactid>mybatis-spring-boot-starter</artifactid>
+<version>${mybatis.spring.boot.version}</version></dependency>
+<dependency><groupid>junit</groupid>
+<artifactid>junit</artifactid>
+<version>${junit.version}</version></dependency>
+<dependency><groupid>log4j</groupid>
+<artifactid>log4j</artifactid>
+<version>${log4j.version}</version></dependency>
+<dependency><groupid>org.projectlombok</groupid>
+<artifactid>lombok</artifactid>
+<version>${lombok.version}</version>
+<optional>true</optional></dependency></dependencies></dependencymanagement>
+<build><plugins><plugin><groupid>org.springframework.boot</groupid>
+<artifactid>spring-boot-maven-plugin</artifactid>
+<configuration><fork>true</fork>
+<addresources>true</addresources></configuration></plugin></plugins></build></project>
+```</details><p>之后在<code>Maven Project</code>窗口中的Lifcycle下执行<code>install</code>选项以检查是否正确</p><h2 id=子工程的创建>子工程的创建</h2><h3 id=创建子工程module>创建子工程module</h3><p>在<code>Project</code>窗口中右键点击父工程，在弹出的菜单中选择New -> Module -> 在弹出的窗口中选择Maven -> 确认<code>Add as module to</code>和<code>Parent</code>皆为父工程，并输入artifactId -> 确认<code>Nodule name</code>(IDEA会自动去掉某些特殊符号) -> 完成</p><p>返回<code>父工程</code>的<code>pom.xml</code>中，查看是否有<code>modules</code>元素</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;modules&gt;</span>
+  <span class=nt>&lt;module&gt;</span>child-project<span class=nt>&lt;/module&gt;</span>
+<span class=nt>&lt;/modules&gt;</span>
+</code></pre></div><h3 id=配置子工程依赖>配置子工程依赖</h3><p>向<code>子工程</code>的<code>pom.xml</code>添加依赖</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;dependencies&gt;</span>
+  <span class=nt>&lt;dependency&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-web<span class=nt>&lt;/artifactId&gt;</span>
+  <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;dependency&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-actuator<span class=nt>&lt;/artifactId&gt;</span>
+  <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;dependency&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>org.mybatis.spring.boot<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>mybatis-spring-boot-starter<span class=nt>&lt;/artifactId&gt;</span>
+  <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;dependency&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>com.alibaba<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>druid-spring-boot-starter<span class=nt>&lt;/artifactId&gt;</span>
+    <span class=nt>&lt;version&gt;</span>1.1.10<span class=nt>&lt;/version&gt;</span>
+  <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;dependency&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>mysql<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>mysql-connector-java<span class=nt>&lt;/artifactId&gt;</span>
+  <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;dependency&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-jdbc<span class=nt>&lt;/artifactId&gt;</span>
+  <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;dependency&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>spring-boot-devtools<span class=nt>&lt;/artifactId&gt;</span>
+  <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;dependency&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>org.projectlombok<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>lombok<span class=nt>&lt;/artifactId&gt;</span>
+    <span class=nt>&lt;optional&gt;</span>true<span class=nt>&lt;/optional&gt;</span>
+  <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;dependency&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-test<span class=nt>&lt;/artifactId&gt;</span>
+    <span class=nt>&lt;scope&gt;</span>test<span class=nt>&lt;/scope&gt;</span>
+  <span class=nt>&lt;/dependency&gt;</span>
+<span class=nt>&lt;/dependencies&gt;</span>
+</code></pre></div><p>最终<code>pom.xml</code></p><details><summary>点击展开</summary>```xml
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemalocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"><parent><groupid>com.ilirus.springcloud</groupid>
+<artifactid>irscloud</artifactid>
+<version>1.0-SNAPSHOT</version></parent>
+<modelversion>4.0.0</modelversion><p><artifactid>irs-provider-payment8001</artifactid></p><dependencies><dependency><groupid>org.springframework.boot</groupid>
+<artifactid>spring-boot-starter-web</artifactid></dependency>
+<dependency><groupid>org.springframework.boot</groupid>
+<artifactid>spring-boot-starter-actuator</artifactid></dependency>
+<dependency><groupid>com.alibaba</groupid>
+<artifactid>druid-spring-boot-starter</artifactid>
+<version>1.1.10</version></dependency>
+<dependency><groupid>org.mybatis.spring.boot</groupid>
+<artifactid>mybatis-spring-boot-starter</artifactid></dependency>
+<dependency><groupid>mysql</groupid>
+<artifactid>mysql-connector-java</artifactid></dependency>
+<dependency><groupid>org.springframework.boot</groupid>
+<artifactid>spring-boot-starter-jdbc</artifactid></dependency>
+<dependency><groupid>org.springframework.boot</groupid>
+<artifactid>spring-boot-devtools</artifactid></dependency>
+<dependency><groupid>org.projectlombok</groupid>
+<artifactid>lombok</artifactid>
+<optional>true</optional></dependency>
+<dependency><groupid>org.springframework.boot</groupid>
+<artifactid>spring-boot-starter-test</artifactid>
+<scope>test</scope></dependency></dependencies></project>
+```</details><h3 id=编写applicationyml>编写application.yml</h3><p>在子工程的<code>src/main/resources</code>目录下创建<code>application.yml</code>文件</p><details><summary>点击展开</summary>```yml
+server:
+port: 8001 # 端口<p>spring:
+application:
+name: child-project # 名称
+datasource:
+type: com.alibaba.druid.pool.DruidDataSource # 数据源类型
+driver-class-name: com.mysql.cj.jdbc.Driver # 数据库驱动包
+url: jdbc:mysql://127.0.0.1:3306/irscloud?useSSL=false&characterEncoding=utf8&useUnicode=true
+username: &mldr;
+password: &mldr;</p><p>mybatis:
+mapper-locations: classpath:mapper/*.xml
+type-aliases-package: com.ilirus.springcloud.entities # entity别名类所在的package</p><pre><code>&lt;/details&gt;
+
+### 创建启动类
+在子工程的`src/main/java/&lt;groupId&gt;`目录下创建对应的启动类
+&lt;details&gt;&lt;summary&gt;点击展开&lt;/summary&gt;```java
+package com.ilirus.springcloud;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@MapperScan(&quot;com.ilirus.springcloud.dao&quot;)
+public class ChildProjectMain {
+    public static void main(String[] args) {
+        SpringApplication.run(ChildProject.class, args);
+    }
+}
+</code></pre></details><h3 id=编写实体类>编写实体类</h3><details><summary>点击展开</summary>```java
+package com.ilirus.springcloud.entities;<p>import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.io.Serializable;</p><p>@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Payment implements Serializable {
+private Long id;
+private String serial;
+}</p><pre><code>
+返回给前端的Result类
+```java
+package com.ilirus.springcloud.entities;
+
+import com.ilirus.springcloud.enums.Status;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
+public class CommonResult&lt;T&gt; {
+    private Integer code;
+    private String message;
+    private T data;
+
+    @NotNull
+    @Contract(&quot;_ -&gt; new&quot;)
+    public static&lt;T&gt; CommonResult&lt;T&gt; Of(@NotNull Status status) {
+        return new CommonResult&lt;T&gt;(status.getCode(), status.getMessage());
+    }
+
+    @NotNull
+    @Contract(&quot;_, _ -&gt; new&quot;)
+    public static&lt;T&gt; CommonResult&lt;T&gt; OfData(@NotNull Status status, T data) {
+        return new CommonResult&lt;T&gt;(status.getCode(), status.getMessage(), data);
+    }
+
+    private CommonResult(Integer code, String message) {
+        this(code, message, null);
+    }
+
+    private CommonResult(Integer code, String message, T data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
+    public Integer getCode() {
+        return this.code;
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    public T getData() {
+        return this.data;
+    }
+}
+</code></pre></details><h3 id=编写枚举类>编写枚举类</h3><details><summary>点击展开</summary>```java
+package com.ilirus.springcloud.enums;<p>import org.jetbrains.annotations.Contract;</p><p>public enum Status {
+SUCCESS(200,&ldquo;sucess&rdquo;),
+FAIL(400,&ldquo;fail&rdquo;),
+NO_DATA_FOUND(404,&ldquo;not found&rdquo;)
+;</p><pre><code>private Integer code;
+private String message;
+
+Status(Integer code, String message) {
+    this.code = code;
+    this.message = message;
+}
+
+@Contract(pure = true)
+public Integer getCode() {
+    return code;
+}
+
+@Contract(pure = true)
+public String getMessage() {
+    return message;
+}
+</code></pre><p>}</p><pre><code>&lt;/details&gt;
+
+### 编写Dao
+&lt;details&gt;&lt;summary&gt;点击展开&lt;/summary&gt;```java
+package com.ilirus.springcloud.dao;
+
+import com.ilirus.springcloud.entities.Payment;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Optional;
+
+public interface PaymentDao {
+    public Optional&lt;Payment&gt; getPaymentByID(@Param(&quot;id&quot;) Long id);
+
+    public int createPayment(Payment payment);
+}
+</code></pre><p>mapper文件</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=cp>&lt;!DOCTYPE mapper PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34; &#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34;&gt;</span>
+
+<span class=nt>&lt;mapper</span> <span class=na>namespace=</span><span class=s>&#34;com.ilirus.springcloud.dao.PaymentDao&#34;</span><span class=nt>&gt;</span>
+
+  <span class=nt>&lt;resultMap</span> <span class=na>id=</span><span class=s>&#34;BaseResultMap&#34;</span> <span class=na>type=</span><span class=s>&#34;com.ilirus.springcloud.entities.Payment&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;id</span> <span class=na>column=</span><span class=s>&#34;id&#34;</span> <span class=na>property=</span><span class=s>&#34;id&#34;</span> <span class=na>jdbcType=</span><span class=s>&#34;BIGINT&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;id</span> <span class=na>column=</span><span class=s>&#34;serial&#34;</span> <span class=na>property=</span><span class=s>&#34;serial&#34;</span> <span class=na>jdbcType=</span><span class=s>&#34;VARCHAR&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;/resultMap&gt;</span>
+  <span class=nt>&lt;select</span> <span class=na>id=</span><span class=s>&#34;getPaymentByID&#34;</span> <span class=na>parameterType=</span><span class=s>&#34;Long&#34;</span> <span class=na>resultMap=</span><span class=s>&#34;BaseResultMap&#34;</span><span class=nt>&gt;</span>
+    select id, serial from payment where id=#{id} limit 1;
+  <span class=nt>&lt;/select&gt;</span>
+
+  <span class=nt>&lt;insert</span> <span class=na>id=</span><span class=s>&#34;createPayment&#34;</span> <span class=na>parameterType=</span><span class=s>&#34;Payment&#34;</span> <span class=na>useGeneratedKeys=</span><span class=s>&#34;true&#34;</span> <span class=na>keyProperty=</span><span class=s>&#34;id&#34;</span><span class=nt>&gt;</span>
+    insert into payment(serial) values(#{serial});
+  <span class=nt>&lt;/insert&gt;</span>
+
+<span class=nt>&lt;/mapper&gt;</span>
+</code></pre></div></details><h3 id=编写service>编写Service</h3><details><summary>点击展开</summary>```java
+package com.ilirus.springcloud.service;<p>import com.ilirus.springcloud.entities.Payment;
+import org.apache.ibatis.annotations.Param;</p><p>public interface PaymentService {
+public Payment getPaymentByID(@Param(&ldquo;id&rdquo;) Long id);</p><pre><code>public int createPayment(Payment payment);
+</code></pre><p>}</p><pre><code>
+实现类
+```java
+package com.ilirus.springcloud.service.impl;
+
+import com.ilirus.springcloud.dao.PaymentDao;
+import com.ilirus.springcloud.entities.Payment;
+import com.ilirus.springcloud.service.PaymentService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
+@Service
+public class PaymentServiceImpl implements PaymentService {
+    @Resource
+    private PaymentDao paymentDao;
+
+    @Override
+    public Payment getPaymentByID(Long id) throws NullPointerException {
+        return paymentDao.getPaymentByID(id).orElse(null);
+    }
+
+    @Override
+    public int createPayment(Payment payment) {
+        return paymentDao.createPayment(payment);
+    }
+}
+</code></pre></details><h3 id=编写controller>编写Controller</h3><details><summary>点击展开</summary>```java
+package com.ilirus.springcloud.controller;<p>import com.ilirus.springcloud.entities.CommonResult;
+import com.ilirus.springcloud.entities.Payment;
+import com.ilirus.springcloud.enums.Status;
+import com.ilirus.springcloud.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;</p><p>import javax.annotation.Resource;</p><p>@RestController
+@RequestMapping("/payment")
+@Slf4j
+public class PaymentController {
+@Resource
+private PaymentService paymentService;</p><pre><code>@PostMapping(&quot;/create&quot;)
+public CommonResult create(@RequestBody Payment payment) {
+    int res = paymentService.createPayment(payment);
+    log.info(&quot;插入结果: &quot;+res);
+
+    if(res &gt; 0) {
+        return CommonResult.Of(Status.SUCCESS);
+    } else {
+        return CommonResult.Of(Status.FAIL);
+    }
+}
+
+@GetMapping(&quot;/query/{id}&quot;)
+public CommonResult queryByID(@PathVariable(&quot;id&quot;) Long id) {
+    Payment payment = paymentService.getPaymentByID(id);
+    if(payment != null) {
+        return CommonResult.OfData(Status.SUCCESS, payment);
+    } else {
+        return CommonResult.Of(Status.NO_DATA_FOUND);
+    }
+}
+</code></pre><p>}</p><pre><code>&lt;/details&gt;
+
+### 编写测试
+在子工程的`src/test/java/&lt;groupId&gt;`目录下创建对应的测试类
+&lt;details&gt;&lt;summary&gt;点击展开&lt;/summary&gt;```java
+package com.ilirus.springcloud;
+
+import com.ilirus.springcloud.entities.Payment;
+import com.ilirus.springcloud.service.PaymentService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.sql.SQLException;
+import java.time.Duration;
+
+@SpringBootTest
+class ChildProjectTest {
+    @Resource
+    PaymentService paymentService;
+
+    @BeforeEach
+    void echo() {
+        System.out.println(&quot;====Test Start====&quot;);
+    }
+
+    @AfterAll
+    static void done() {
+        System.out.println(&quot;====Test Done.====&quot;);
+    }
+
+    @Test
+    void checkQuery() {
+        Payment payment = paymentService.getPaymentByID(1L);
+        Assertions.assertNotNull(payment);
+    }
+
+    @Test
+    @Transactional
+    @Rollback
+    void checkCreate() throws SQLException {
+        Payment payment = new Payment();
+        payment.setSerial(&quot;test&quot;);
+        int res = paymentService.createPayment(payment);
+        System.out.println(res);
+        Assertions.assertNotEquals(res, 0);
+
+        Assertions.assertThrows(SQLException.class, () -&gt; {
+            ...
+        });
+        Assertions.assertTimeout(Duration.ofSeconds(3), () -&gt; {
+            ...
+        });
+    }
+}
+</code></pre></details><h2 id=提取子工程中的共同模块>提取子工程中的共同模块</h2><p>再创建一个子工程，使你的父工程中目录下有两个子工程。</p><h3 id=再次创建一个子工程>再次创建一个子工程</h3><p>按照之前的方式再创建一个子工程</p><h3 id=编写pomxml>编写pom.xml</h3><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;project</span> <span class=na>xmlns=</span><span class=s>&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span class=na>xmlns:xsi=</span><span class=s>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span class=na>xsi:schemaLocation=</span><span class=s>&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;parent&gt;</span>
+    <span class=nt>&lt;groupId&gt;</span>com.ilirus.springcloud<span class=nt>&lt;/groupId&gt;</span>
+    <span class=nt>&lt;artifactId&gt;</span>irscloud<span class=nt>&lt;/artifactId&gt;</span>
+    <span class=nt>&lt;version&gt;</span>1.0-SNAPSHOT<span class=nt>&lt;/version&gt;</span>
+  <span class=nt>&lt;/parent&gt;</span>
+  <span class=nt>&lt;modelVersion&gt;</span>4.0.0<span class=nt>&lt;/modelVersion&gt;</span>
+
+  <span class=nt>&lt;artifactId&gt;</span>irs-api-common<span class=nt>&lt;/artifactId&gt;</span>
+
+  <span class=nt>&lt;dependencies&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>spring-boot-devtools<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;scope&gt;</span>runtime<span class=nt>&lt;/scope&gt;</span>
+      <span class=nt>&lt;optional&gt;</span>true<span class=nt>&lt;/optional&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>org.projectlombok<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>lombok<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;optional&gt;</span>true<span class=nt>&lt;/optional&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+    <span class=nt>&lt;dependency&gt;</span>
+      <span class=nt>&lt;groupId&gt;</span>cn.hutool<span class=nt>&lt;/groupId&gt;</span>
+      <span class=nt>&lt;artifactId&gt;</span>hutool-all<span class=nt>&lt;/artifactId&gt;</span>
+      <span class=nt>&lt;version&gt;</span>5.1.0<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;/dependency&gt;</span>
+  <span class=nt>&lt;/dependencies&gt;</span>
+
+<span class=nt>&lt;/project&gt;</span>
+</code></pre></div><h3 id=提取共同模块>提取共同模块</h3><p>将另外两个子工程中共同的模块(entities/enums等)转移到此工程下</p><h3 id=运行maven-clean-install命令>运行maven clean install命令</h3><p>运行maven clean install命令，同时检查是否有误</p><h3 id=修改原先的子工程>修改原先的子工程</h3><p>在子工程中引入通用包</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;dependency&gt;</span>
+  <span class=nt>&lt;groupId&gt;</span>com.ilirus.springcloud<span class=nt>&lt;/groupId&gt;</span>
+  <span class=nt>&lt;artifactId&gt;</span>irs-api-common<span class=nt>&lt;/artifactId&gt;</span>
+  <span class=nt>&lt;version&gt;</span>${project.version}<span class=nt>&lt;/version&gt;</span>
+<span class=nt>&lt;/dependency&gt;</span>
+</code></pre></div><p>在Run dashboard 中运行项目查看是否有误</p></section><footer class=article-footer><section class=article-tags><a href=/tags/java/>Java</a>
+<a href=/tags/springcloud/>SpringCloud</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper><h2 class=section-title>相关文章</h2><div class=related-contents><div class="flex article-list--tile"><article><a href=/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A010-openfeign%E8%B6%85%E6%97%B6%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/><div class=article-details><h2 class=article-title>[笔记]SpringCloud学习10: OpenFeign超时配置与日志记录</h2></div></a></article><article><a href=/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A009-openfeign%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/><div class=article-details><h2 class=article-title>[笔记]SpringCloud学习09: OpenFeign服务调用</h2></div></a></article><article><a href=/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A008-ribbon%E5%9F%BA%E7%A1%80/><div class=article-details><h2 class=article-title>[笔记]SpringCloud学习08: Ribbon基础</h2></div></a></article><article><a href=/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A007-eureka%E8%87%AA%E6%88%91%E4%BF%9D%E6%8A%A4/><div class=article-details><h2 class=article-title>[笔记]SpringCloud学习07: Eureka自我保护</h2></div></a></article><article><a href=/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A006-eureka%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/><div class=article-details><h2 class=article-title>[笔记]SpringCloud学习06: Eureka服务发现</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//hugo-theme-stack.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener('onColorSchemeChange',a=>{DISQUS&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2021 Ilirus</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.3.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script></body></html>

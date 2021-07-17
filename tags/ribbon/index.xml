@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ribbon on Ilirus</title><link>https://chaosalphard.github.io/tags/ribbon/</link><description>Recent content in Ribbon on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 21 Mar 2020 03:44:07 +0000</lastBuildDate><atom:link href="https://chaosalphard.github.io/tags/ribbon/index.xml" rel="self" type="application/rss+xml"/><item><title>[笔记]SpringCloud学习08: Ribbon基础</title><link>https://chaosalphard.github.io/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A008-ribbon%E5%9F%BA%E7%A1%80/</link><pubDate>Sat, 21 Mar 2020 03:44:07 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E7%AC%94%E8%AE%B0springcloud%E5%AD%A6%E4%B9%A008-ribbon%E5%9F%BA%E7%A1%80/</guid><description>Ribbon 介绍 Ribbon是Netflix发布的一款用于负载均衡的开源项目，是一个客户端的负载均衡器。
+Ribbon会基于某些规则(轮询，随机等)决定要调用的服务链接，并且可以使用Ribbon实现自定义的负载均衡算法。
+负载均衡是什么 负载均衡(Load Balance)简单来说就是将用户的请求平摊到各个服务器上，从而提高服务的承载能力。
+Ribbon 本地负载均衡和Nginx 服务端负载均衡的区别 Nginx: 客户端所有请求都先发给Nginx，让后由Nginx 服务器实现请求转发。(集中式LB)
+Ribbon: 在调用微服务接口的时候，由Ribbon 的负载均衡算法决定调用哪个服务接口。(进程内LB)
+集中式LB 和进程内LB 集中式Load Balancer: 在服务的消费方和提供方之间使用独立的LB 设施，由该设施负责把请求访问通过某种策略转发制服务提供方
+进程内Load Balancer: 将LB 逻辑集成到消费方，消费方从服务注册中心获知有那些服务地址可用，然后自己再从这些地址中选择一个合适的服务器
+Ribbon 引入 修改pom.xml
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-ribbon&amp;lt;/artifactId&amp;gt; &amp;lt;!-- 版本从父工程的dependencyManagement中继承, 故此处不用写 --&amp;gt; &amp;lt;/dependency&amp;gt; Ribbon已经集成在Eureka Client中，如果pom.xml中已经引入Eureka Client，则可以不用再引入Ribbon
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; Ribbon 的使用 使用@LoadBalancer注解授予RestTemplate负载均衡功能，
+@Configuration public class ApplicationontextConfig { @Bean @LoadBalanced // 授予restTemplate负载均衡能力 public RestTemplate getRestTemplate() { return new RestTemplate(); } } 使用@Resource或者@Autowired 装配具有负载均衡能力的RestTemplate</description></item></channel></rss>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sass on Ilirus</title><link>https://chaosalphard.github.io/tags/sass/</link><description>Recent content in Sass on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 26 Aug 2018 20:25:51 +0000</lastBuildDate><atom:link href="https://chaosalphard.github.io/tags/sass/index.xml" rel="self" type="application/rss+xml"/><item><title>初识SCSS</title><link>https://chaosalphard.github.io/p/%E5%88%9D%E8%AF%86scss/</link><pubDate>Sun, 26 Aug 2018 20:25:51 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E5%88%9D%E8%AF%86scss/</guid><description>初识SCSS Sass/SCSS 的区别 SCSS是Sass3 引入的新语法，其语法完全兼容CSS3，并且继承了Sass的功能。
+Sass和SCSS的区别主要有以下两点:
+文件拓展名不同 Sass文件以 .sass 后缀为拓展名，SCSS文件以 .scss 后缀为拓展名。
+语法不同 Sass以缩进式语法规则来书写，不带{}和;，而SCSS的语法书写则与CSS相似。
+Sass语法:
+body margin: 0 background: #3694FA div width: 240px heigit: 240px border: width: 1px style: solid color: #3694FA 注意冒号后面一定要有空格
+SCSS语法:
+body{ margin:0; background:#3694FA; div{ width:240px; height:240px; border:{ width: 1px; style: solid; color: #3694FA; } } } 最终输出CSS文件
+body { margin: 0; background: #3694FA; } body div { width: 240px; height: 240px; border-width: 1px; border-style: solid; border-color: #3694FA; } SCSS的安装 安装Ruby Sass基于Ruby语言开发而成，因此需要先安装Ruby。</description></item></channel></rss>

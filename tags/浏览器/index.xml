@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>浏览器 on Ilirus</title><link>https://chaosalphard.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/</link><description>Recent content in 浏览器 on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 03 Aug 2018 16:28:24 +0000</lastBuildDate><atom:link href="https://chaosalphard.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>配置Firefox浏览器书签打开方式</title><link>https://chaosalphard.github.io/p/%E9%85%8D%E7%BD%AEfirefox%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/</link><pubDate>Fri, 03 Aug 2018 16:28:24 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E9%85%8D%E7%BD%AEfirefox%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/</guid><description>配置Firefox浏览器书签打开方式 在Firefox浏览器中，书签和地址栏链接的打开方式默认是覆盖当前标签页的，那么，怎样让Firefox浏览器默认在新标签页打开书签和地址栏链接呢？
+其实很简单。
+首先，在浏览器地址栏输入
+about:config 然后搜索&amp;quot;intab&amp;quot;
+将以下两个选项的值
+# 在新标签页打开书签 browser.tabs.loadBookmarksInTabs # 在新标签页打开url 地址 browser.urlbar.openintab 由false改为true即可
+适用版本61.0+</description></item></channel></rss>

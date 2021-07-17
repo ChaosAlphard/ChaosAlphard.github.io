@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on Ilirus</title><link>https://chaosalphard.github.io/tags/windows/</link><description>Recent content in Windows on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 11 Sep 2019 23:50:21 +0000</lastBuildDate><atom:link href="https://chaosalphard.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>在Windows的UAC授权中增加密码验证</title><link>https://chaosalphard.github.io/p/%E5%9C%A8windows%E7%9A%84uac%E6%8E%88%E6%9D%83%E4%B8%AD%E5%A2%9E%E5%8A%A0%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81/</link><pubDate>Wed, 11 Sep 2019 23:50:21 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E5%9C%A8windows%E7%9A%84uac%E6%8E%88%E6%9D%83%E4%B8%AD%E5%A2%9E%E5%8A%A0%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81/</guid><description>在Windows的UAC授权中增加密码验证 　通常情况下，当用户以管理员账户登录后，如果要进行某些需要管理员权限的操作(例如：为所有用户安装软件)，系统会弹出UAC(用户账户控制)弹窗，以向用户要求权限。
+普通用户需要输入管理员密码才可授予权限，而管理员账户只需点击 “是” 按钮即可授予权限。
+　但是这样并不是很安全，所以我希望，即便是在管理员账户下，也需要进行密码验证。而且日常使用中，需要UAC授权的情况并不多见，所以增加密码验证这一步也并不会太影响日常使用。
+以管理员账户登录，按下Win+R，输入gpedit.msc 以进入组策略编辑器 进入 计算机配置 -&amp;gt; Windows设置 -&amp;gt; 安全设置 -&amp;gt; 本地策略 -&amp;gt; 安全选项 选项卡 找到 用户账户控制：管理员批准模式中管理员的提升权限提示的行为 选项 将其属性更改为提示凭据 或者 在安全桌面上提示凭据 即可</description></item><item><title>使用VHD创建本地虚拟系统</title><link>https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8vhd%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E8%99%9A%E6%8B%9F%E7%B3%BB%E7%BB%9F/</link><pubDate>Sun, 20 May 2018 10:30:12 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8vhd%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E8%99%9A%E6%8B%9F%E7%B3%BB%E7%BB%9F/</guid><description>VHD/VHDX简介 什么是VHD VHD 是Microsoft Virtual Hard Disk format（微软虚拟磁盘文件）的简称。可以由Windows Vista/7/8/10，Windows Server 2008R2 等系统创建。
+一个VHD文件可以被虚拟为一块硬盘，并且可以像操作一块硬盘一样操作VHD文件，例如：读取、写入、创建分区、格式化等等。
+什么是VHDX 随着虚拟环境的企业工作负荷的增加以及性能要求的提高，虚拟硬盘 (VHD) 格式需要适应这些变化。因此，Windows Server 2012 中的 Hyper-V 引入了一个新版本的VHD格式，称为VHDX。
+与旧的VHD格式相比，VHDX具有更大的存储容量。它优化了动态磁盘和差异磁盘的结构对齐方式，以防止在新的大型扇区物理磁盘上性能降级。同时还能在电源故障期间提供数据损坏保护。
+VHDX格式的主要新功能如下：
+支持的虚拟硬盘的存储容量高达 64 TB。 通过记录对VHDX元数据结构的更新，可以在电源发生故障时保护数据不会被损坏。 改进了虚拟硬盘格式的对齐方式，可在大型扇区磁盘上更好地工作。 VHDX 格式还提供以下功能：
+动态磁盘和差异磁盘有较大的数据块大小，可让这些磁盘满足工作负荷的需求。 拥有4KB的逻辑扇区，可以在为4KB扇区设计的应用程序和作负荷使用该磁盘时提供较高的性能。 能够存储有关用户可能想记录的文件的自定义元数据，如操作系统版本或应用的修补程序。 高效地表示数据（也称为“剪裁”），使文件大小更小并且允许基础物理存储设备回收未使用的空间。（剪裁需要直接连接到虚拟机或 SCSI 磁盘的物理磁盘以及与剪裁兼容的硬件。) VHD/VHDX的优点 维护简单
+操作VHD就和操作物理硬盘一样，我们可以对其进行分区、格式化、压缩、删除等等操作，并且这些操作并不会影响你的物理分区。 加载自如
+VHD磁盘可以进行分离操作，这样在磁盘管理中就无法找到VHD磁盘分区。如果想要再次挂载，只需对VHD磁盘文件进行挂载操作即可。 轻松备份
+备份时仅需要将 .vhd/.vhdx 文件进行备份，文件中所包含的所有信息(包括分区表等信息)就被备份下来了。 迁移方便
+只需要将 .vhd/.vhdx 文件复制到目标计算机上，再进行附加操作即可完成迁移。也可以通过服务器进行分发。也可以在物理机和虚拟机之间进行迁移。 VHD系统的特点 安装简便 VHD系统安装非常简单，到了Windows10系统更是如此，甚至可以从别的电脑上拷一个Windows10的VHD来启动，类似于即插即用。</description></item></channel></rss>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on Ilirus</title><link>https://chaosalphard.github.io/tags/hugo/</link><description>Recent content in Hugo on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 22 May 2021 19:38:27 +0800</lastBuildDate><atom:link href="https://chaosalphard.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Hugo搭建个人博客</title><link>https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link><pubDate>Sat, 22 May 2021 19:38:27 +0800</pubDate><guid>https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid><description>近期我部署在Gitee上的博客已经不能用了, 虽然还能上传, 但是已经不会把上传的文章更新出来了, 故迁移到Github上, 顺便Hexo文章生成速度不太理想, 趁着这次部署站点迁移一并切换到Hugo.
+搭建Hugo写作环境 Hugo下载 首先从Hugo官网下载适合自己电脑环境的Hugo版本。
+下载地址：https://github.com/gohugoio/hugo/releases
+将解压出来的Hugo.exe 添加到环境变量中。
+创建Github Pages 仓库 进入Github网站，点击New Repositories 按钮，新建一个仓库，名称我这里选blog，访问类型选择Public 创建仓库
+创建完成后点击Settings选项，选择Pages，Branch选择master，目录选择/docs，之后点击save按钮，即可看到上方蓝色提示：Your site is ready to be published at https://chaosalphard.github.io/blog，这个地址便是Github给你分配的博客地址，如果你有自己的域名的话可以在这里绑定。 部署网页
+初始化Hugo站点 将刚才创建的Git 仓库Clone 到本地，打开命令行，切换到刚才Clone 下来的仓库的文件夹里面，此时文件夹里面应该除了一个名为.git的隐藏文件夹之外没有其他文件了，执行hugo new site . --force 来初始化hugo站点。
+之后选择一款自己喜欢的主题，地址：https://themes.gohugo.io，下载或者Clone 到本地，将文件夹放到hugo站点的根目录下。
+编辑config.toml/config.yaml/config.json 配置文件，修改baseurl 为Github 分配的博客地址，修改theme 为你的主题文件夹名称。
+创建文章 切换到hugo站点目录，执行hugo new post/article.md 来新建一篇名为article 的文章，文件位于/content/post 目录下，打开文件进行编辑，因为我之前用Hexo的时候已经有一些文章了，所以我直接复制过来，Hexo和Hugo都支持markdown语法编写的文章，所以可以直接切换。
+部署到GitHubPages 本地调试 切换到hugo站点目录，执行hugo server -D，此时会输出以下信息
+~/Hugo/blog&amp;gt; hugo server -D Start building sites … | ZH-CN -------------------+-------- Pages | 182 Paginator pages | 20 Non-page files | 4 Static files | 0 Processed images | 13 Aliases | 61 Sitemaps | 1 Cleaned | 0 Built in 3795 ms Watching for changes in ~/Hugo/blog/{archetypes,assets,content,data,layouts,static,themes} Watching for config changes in ~/Hugo/blog/config.</description></item></channel></rss>

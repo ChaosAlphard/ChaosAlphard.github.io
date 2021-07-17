@@ -1,0 +1,173 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
+ 安装Webpack :: 初始化 yarn init :: 安装webpack 和 webpack-cli :: -D表示是开发依赖, 上线时不需要 yarn add webpack webpack-cli -D 配置Webpack  从 Webpack v4.0.0 开始，可以不用引入配置文件。然而，webpack 仍然还是高度可配置的。
+Webpack 默认配置文件名为 webpack.config.js或webpackfile.js。
+也可以在启动时使用 &amp;ndash;config 参数指定配置文件名称
+ // 引入path模块 (自带, 无需安装) const path = require(&amp;#39;path&amp;#39;) // 导出配置模块 module.exports = { // 打包模式 默认有两种 production|development  // production: 生产模式  // development: 开发模式  mode: &amp;#39;development&amp;#39;, // 入口文件  entry: &amp;#39;."><title>Webpack的安装与配置</title><link rel=canonical href=https://chaosalphard.github.io/p/webpack%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Webpack的安装与配置"><meta property="og:description" content="webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
+ 安装Webpack :: 初始化 yarn init :: 安装webpack 和 webpack-cli :: -D表示是开发依赖, 上线时不需要 yarn add webpack webpack-cli -D 配置Webpack  从 Webpack v4.0.0 开始，可以不用引入配置文件。然而，webpack 仍然还是高度可配置的。
+Webpack 默认配置文件名为 webpack.config.js或webpackfile.js。
+也可以在启动时使用 &amp;ndash;config 参数指定配置文件名称
+ // 引入path模块 (自带, 无需安装) const path = require(&amp;#39;path&amp;#39;) // 导出配置模块 module.exports = { // 打包模式 默认有两种 production|development  // production: 生产模式  // development: 开发模式  mode: &amp;#39;development&amp;#39;, // 入口文件  entry: &amp;#39;."><meta property="og:url" content="https://chaosalphard.github.io/p/webpack%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"><meta property="og:site_name" content="Ilirus"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="Webpack"><meta property="article:published_time" content="2019-06-21T23:22:15+00:00"><meta property="article:modified_time" content="2019-06-21T23:22:15+00:00"><meta name=twitter:title content="Webpack的安装与配置"><meta name=twitter:description content="webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
+ 安装Webpack :: 初始化 yarn init :: 安装webpack 和 webpack-cli :: -D表示是开发依赖, 上线时不需要 yarn add webpack webpack-cli -D 配置Webpack  从 Webpack v4.0.0 开始，可以不用引入配置文件。然而，webpack 仍然还是高度可配置的。
+Webpack 默认配置文件名为 webpack.config.js或webpackfile.js。
+也可以在启动时使用 &amp;ndash;config 参数指定配置文件名称
+ // 引入path模块 (自带, 无需安装) const path = require(&amp;#39;path&amp;#39;) // 导出配置模块 module.exports = { // 打包模式 默认有两种 production|development  // production: 生产模式  // development: 开发模式  mode: &amp;#39;development&amp;#39;, // 入口文件  entry: &amp;#39;."></head><body><script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.body.dataset.scheme='dark':document.body.dataset.scheme='light'})()</script><div class="container main-container flex on-phone--column extended article-page with-toolbar"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hu3efe4cd0dfb29873d1b0d65561d00585_584028_300x0_resize_box_2.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+<span class=emoji>🌌</span></figure><h1 class=site-name><a href=https://chaosalphard.github.io>Ilirus</a></h1><h2 class=site-description>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>暗色模式</span></li></ol></aside><main class="main full-width"><div id=article-toolbar><a href=https://chaosalphard.github.io class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E7%BC%96%E7%A8%8B/>编程</a>
+<a href=/categories/%E5%89%8D%E7%AB%AF/>前端</a>
+<a href=/categories/webpack/>Webpack</a></header><h2 class=article-title><a href=/p/webpack%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/>Webpack的安装与配置</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>Jun 21, 2019</time></footer></div></header><section class=article-content><blockquote><p>webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</p></blockquote><h1 id=安装webpack>安装Webpack</h1><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>:: 初始化
+yarn init
+
+:: 安装webpack 和 webpack-cli
+:: -D表示是开发依赖, 上线时不需要
+yarn add webpack webpack-cli -D
+</code></pre></div><h1 id=配置webpack>配置Webpack</h1><blockquote><p>从 Webpack v4.0.0 开始，可以不用引入配置文件。然而，webpack 仍然还是高度可配置的。<br>Webpack 默认配置文件名为 <code>webpack.config.js</code>或<code>webpackfile.js</code>。<br>也可以在启动时使用 &ndash;config 参数指定配置文件名称</p></blockquote><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// 引入path模块 (自带, 无需安装)
+</span><span class=c1></span><span class=kr>const</span> <span class=nx>path</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;path&#39;</span><span class=p>)</span>
+
+<span class=c1>// 导出配置模块
+</span><span class=c1></span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+  <span class=c1>// 打包模式 默认有两种 production|development
+</span><span class=c1></span>  <span class=c1>// production: 生产模式
+</span><span class=c1></span>  <span class=c1>// development: 开发模式
+</span><span class=c1></span>  <span class=nx>mode</span><span class=o>:</span> <span class=s1>&#39;development&#39;</span><span class=p>,</span>
+  <span class=c1>// 入口文件
+</span><span class=c1></span>  <span class=nx>entry</span><span class=o>:</span> <span class=s1>&#39;./src/index.js&#39;</span><span class=p>,</span>
+  <span class=c1>// 输出
+</span><span class=c1></span>  <span class=nx>output</span><span class=o>:</span> <span class=p>{</span>
+    <span class=c1>// 打包后的文件名
+</span><span class=c1></span>    <span class=nx>filename</span><span class=o>:</span> <span class=s1>&#39;bundle.js&#39;</span><span class=p>,</span>
+    <span class=c1>// 打包后的路径 (要求必须是绝对路径)
+</span><span class=c1></span>    <span class=nx>path</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=mi>__</span><span class=nx>dirname</span><span class=cm>/*指当前路径*/</span><span class=p>,</span> <span class=s1>&#39;dist&#39;</span><span class=cm>/*指打包到的文件夹名称*/</span><span class=p>)</span>
+  <span class=p>},</span>
+  <span class=c1>// 开发服务器的配置
+</span><span class=c1></span>  <span class=nx>devServer</span><span class=o>:</span> <span class=p>{</span>
+    <span class=c1>// 端口
+</span><span class=c1></span>    <span class=nx>port</span><span class=o>:</span> <span class=mi>3000</span><span class=p>,</span>
+    <span class=c1>// 打包进度
+</span><span class=c1></span>    <span class=nx>progress</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+    <span class=c1>// 打包后文件的放置位置
+</span><span class=c1></span>    <span class=nx>contentBase</span><span class=o>:</span> <span class=s1>&#39;./dev&#39;</span><span class=p>,</span>
+    <span class=c1>// 启用压缩
+</span><span class=c1></span>    <span class=nx>compress</span><span class=o>:</span> <span class=kc>true</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div><h1 id=webpack打包指令>Webpack打包指令</h1><div class=highlight><pre class=chroma><code class=language-batch data-lang=batch><span class=p>:</span><span class=c1>: 因为安装在devDependencies 中, 所以需要用npx 来执行</span>
+npx webpack
+</code></pre></div><h1 id=webpack打包后的文件>Webpack打包后的文件</h1><p>Webpack 打包后的是一个自执行函数(IIFE), 该函数接收一个对象作为参数:</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>modules</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// ...
+</span><span class=c1></span><span class=p>})</span> <span class=p>({</span>
+  <span class=c1>// key: 模块的路径
+</span><span class=c1></span>  <span class=s2>&#34;./src/index.js&#34;</span><span class=o>:</span>
+  <span class=c1>// value: 函数
+</span><span class=c1></span>  <span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>module</span><span class=p>,</span> <span class=nx>exports</span><span class=p>,</span> <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>)</span> <span class=p>{</span>
+    <span class=nb>eval</span><span class=p>(</span><span class=s2>&#34;const str = __webpack_require__(/*! ./str.js */ \&#34;./src/str.js\&#34;)\r\n\r\nconsole.log(`Hello ${str}`)\n\n//# sourceURL=webpack:///./src/index.js?&#34;</span><span class=p>);</span>
+  <span class=p>}),</span>
+
+  <span class=s2>&#34;./src/str.js&#34;</span><span class=o>:</span>
+  <span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>module</span><span class=p>,</span> <span class=nx>exports</span><span class=p>)</span> <span class=p>{</span>
+    <span class=nb>eval</span><span class=p>(</span><span class=s2>&#34;module.exports = &#39;World&#39;\n\n//# sourceURL=webpack:///./src/str.js?&#34;</span><span class=p>);</span>
+  <span class=p>})</span>
+<span class=p>})</span>
+</code></pre></div><p>函数内的实现</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// webpackBootstrap
+</span><span class=c1>// webpack 启动函数
+</span><span class=c1></span><span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>modules</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// The module cache
+</span><span class=c1></span>  <span class=c1>// module 缓存
+</span><span class=c1></span>  <span class=kd>var</span> <span class=nx>installedModules</span> <span class=o>=</span> <span class=p>{};</span>
+
+  <span class=c1>// The require function
+</span><span class=c1></span>  <span class=c1>// 配置/实现require 方法
+</span><span class=c1></span>  <span class=c1>// (moduleId = &#34;./src/index.js&#34;)
+</span><span class=c1></span>  <span class=kd>function</span> <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>(</span><span class=nx>moduleId</span><span class=p>)</span> <span class=p>{</span>
+
+    <span class=c1>// Check if module is in cache
+</span><span class=c1></span>    <span class=c1>// 检查module是否有缓存
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=nx>installedModules</span><span class=p>[</span><span class=nx>moduleId</span><span class=p>])</span> <span class=p>{</span>
+      <span class=k>return</span> <span class=nx>installedModules</span><span class=p>[</span><span class=nx>moduleId</span><span class=p>].</span><span class=nx>exports</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=c1>// Create a new module (and put it into the cache)
+</span><span class=c1></span>    <span class=c1>// 创建module
+</span><span class=c1></span>    <span class=kd>var</span> <span class=nx>module</span> <span class=o>=</span> <span class=nx>installedModules</span><span class=p>[</span><span class=nx>moduleId</span><span class=p>]</span> <span class=o>=</span> <span class=p>{</span>
+      <span class=nx>i</span><span class=o>:</span> <span class=nx>moduleId</span><span class=p>,</span>
+      <span class=nx>l</span><span class=o>:</span> <span class=kc>false</span><span class=p>,</span>
+      <span class=nx>exports</span><span class=o>:</span> <span class=p>{}</span>
+    <span class=p>};</span>
+
+    <span class=c1>// Execute the module function
+</span><span class=c1></span>    <span class=c1>// 从module中的id(key), 找到value(函数), 用过call()来执行函数
+</span><span class=c1></span>    <span class=nx>modules</span><span class=p>[</span><span class=nx>moduleId</span><span class=p>].</span><span class=nx>call</span><span class=p>(</span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span><span class=p>,</span> <span class=nx>module</span><span class=p>,</span> <span class=nx>module</span><span class=p>.</span><span class=nx>exports</span><span class=p>,</span> <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>);</span>
+
+    <span class=c1>// Flag the module as loaded
+</span><span class=c1></span>    <span class=c1>// 将module 标记为已加载(loaded)
+</span><span class=c1></span>    <span class=nx>module</span><span class=p>.</span><span class=nx>l</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+
+    <span class=c1>// Return the exports of the module
+</span><span class=c1></span>    <span class=c1>// 返回module 的导出
+</span><span class=c1></span>    <span class=k>return</span> <span class=nx>module</span><span class=p>.</span><span class=nx>exports</span><span class=p>;</span>
+  <span class=p>}</span>
+
+
+  <span class=c1>// expose the modules object (__webpack_modules__)
+</span><span class=c1></span>  <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>m</span> <span class=o>=</span> <span class=nx>modules</span><span class=p>;</span>
+
+  <span class=c1>// expose the module cache
+</span><span class=c1></span>  <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>c</span> <span class=o>=</span> <span class=nx>installedModules</span><span class=p>;</span>
+
+  <span class=c1>// define getter function for harmony exports
+</span><span class=c1></span>  <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>d</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>exports</span><span class=p>,</span> <span class=nx>name</span><span class=p>,</span> <span class=nx>getter</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>o</span><span class=p>(</span><span class=nx>exports</span><span class=p>,</span> <span class=nx>name</span><span class=p>))</span> <span class=p>{</span>
+      <span class=nb>Object</span><span class=p>.</span><span class=nx>defineProperty</span><span class=p>(</span><span class=nx>exports</span><span class=p>,</span> <span class=nx>name</span><span class=p>,</span> <span class=p>{</span> <span class=nx>enumerable</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span> <span class=nx>get</span><span class=o>:</span> <span class=nx>getter</span> <span class=p>});</span>
+    <span class=p>}</span>
+  <span class=p>};</span>
+
+  <span class=c1>// define __esModule on exports
+</span><span class=c1></span>  <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>r</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>exports</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=k>typeof</span> <span class=nx>Symbol</span> <span class=o>!==</span> <span class=s1>&#39;undefined&#39;</span> <span class=o>&amp;&amp;</span> <span class=nx>Symbol</span><span class=p>.</span><span class=nx>toStringTag</span><span class=p>)</span> <span class=p>{</span>
+      <span class=nb>Object</span><span class=p>.</span><span class=nx>defineProperty</span><span class=p>(</span><span class=nx>exports</span><span class=p>,</span> <span class=nx>Symbol</span><span class=p>.</span><span class=nx>toStringTag</span><span class=p>,</span> <span class=p>{</span> <span class=nx>value</span><span class=o>:</span> <span class=s1>&#39;Module&#39;</span> <span class=p>});</span>
+    <span class=p>}</span>
+    <span class=nb>Object</span><span class=p>.</span><span class=nx>defineProperty</span><span class=p>(</span><span class=nx>exports</span><span class=p>,</span> <span class=s1>&#39;__esModule&#39;</span><span class=p>,</span> <span class=p>{</span> <span class=nx>value</span><span class=o>:</span> <span class=kc>true</span> <span class=p>});</span>
+  <span class=p>};</span>
+
+  <span class=c1>// create a fake namespace object
+</span><span class=c1></span>  <span class=c1>// mode &amp; 1: value is a module id, require it
+</span><span class=c1></span>  <span class=c1>// mode &amp; 2: merge all properties of value into the ns
+</span><span class=c1></span>  <span class=c1>// mode &amp; 4: return value when already ns object
+</span><span class=c1></span>  <span class=c1>// mode &amp; 8|1: behave like require
+</span><span class=c1></span>  <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>t</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>value</span><span class=p>,</span> <span class=nx>mode</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=nx>mode</span> <span class=o>&amp;</span> <span class=mi>1</span><span class=p>)</span> <span class=nx>value</span> <span class=o>=</span> <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>(</span><span class=nx>value</span><span class=p>);</span>
+    <span class=k>if</span><span class=p>(</span><span class=nx>mode</span> <span class=o>&amp;</span> <span class=mi>8</span><span class=p>)</span> <span class=k>return</span> <span class=nx>value</span><span class=p>;</span>
+    <span class=k>if</span><span class=p>((</span><span class=nx>mode</span> <span class=o>&amp;</span> <span class=mi>4</span><span class=p>)</span> <span class=o>&amp;&amp;</span> <span class=k>typeof</span> <span class=nx>value</span> <span class=o>===</span> <span class=s1>&#39;object&#39;</span> <span class=o>&amp;&amp;</span> <span class=nx>value</span> <span class=o>&amp;&amp;</span> <span class=nx>value</span><span class=p>.</span><span class=mi>__</span><span class=nx>esModule</span><span class=p>)</span> <span class=k>return</span> <span class=nx>value</span><span class=p>;</span>
+    <span class=kd>var</span> <span class=nx>ns</span> <span class=o>=</span> <span class=nb>Object</span><span class=p>.</span><span class=nx>create</span><span class=p>(</span><span class=kc>null</span><span class=p>);</span>
+    <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>r</span><span class=p>(</span><span class=nx>ns</span><span class=p>);</span>
+    <span class=nb>Object</span><span class=p>.</span><span class=nx>defineProperty</span><span class=p>(</span><span class=nx>ns</span><span class=p>,</span> <span class=s1>&#39;default&#39;</span><span class=p>,</span> <span class=p>{</span> <span class=nx>enumerable</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span> <span class=nx>value</span><span class=o>:</span> <span class=nx>value</span> <span class=p>});</span>
+    <span class=k>if</span><span class=p>(</span><span class=nx>mode</span> <span class=o>&amp;</span> <span class=mi>2</span> <span class=o>&amp;&amp;</span> <span class=k>typeof</span> <span class=nx>value</span> <span class=o>!=</span> <span class=s1>&#39;string&#39;</span><span class=p>)</span> <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>key</span> <span class=k>in</span> <span class=nx>value</span><span class=p>)</span> <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>d</span><span class=p>(</span><span class=nx>ns</span><span class=p>,</span> <span class=nx>key</span><span class=p>,</span> <span class=kd>function</span><span class=p>(</span><span class=nx>key</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=nx>value</span><span class=p>[</span><span class=nx>key</span><span class=p>];</span> <span class=p>}.</span><span class=nx>bind</span><span class=p>(</span><span class=kc>null</span><span class=p>,</span> <span class=nx>key</span><span class=p>));</span>
+    <span class=k>return</span> <span class=nx>ns</span><span class=p>;</span>
+  <span class=p>};</span>
+
+  <span class=c1>// getDefaultExport function for compatibility with non-harmony modules
+</span><span class=c1></span>  <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>n</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>module</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kd>var</span> <span class=nx>getter</span> <span class=o>=</span> <span class=nx>module</span> <span class=o>&amp;&amp;</span> <span class=nx>module</span><span class=p>.</span><span class=mi>__</span><span class=nx>esModule</span> <span class=o>?</span>
+      <span class=kd>function</span> <span class=nx>getDefault</span><span class=p>()</span> <span class=p>{</span> <span class=k>return</span> <span class=nx>module</span><span class=p>[</span><span class=s1>&#39;default&#39;</span><span class=p>];</span> <span class=p>}</span> <span class=o>:</span>
+      <span class=kd>function</span> <span class=nx>getModuleExports</span><span class=p>()</span> <span class=p>{</span> <span class=k>return</span> <span class=nx>module</span><span class=p>;</span> <span class=p>};</span>
+    <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>d</span><span class=p>(</span><span class=nx>getter</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=nx>getter</span><span class=p>);</span>
+    <span class=k>return</span> <span class=nx>getter</span><span class=p>;</span>
+  <span class=p>};</span>
+
+  <span class=c1>// Object.prototype.hasOwnProperty.call
+</span><span class=c1></span>  <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>o</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=nx>property</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=nb>Object</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>hasOwnProperty</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=nx>property</span><span class=p>);</span> <span class=p>};</span>
+
+  <span class=c1>// __webpack_public_path__
+</span><span class=c1></span>  <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>p</span> <span class=o>=</span> <span class=s2>&#34;&#34;</span><span class=p>;</span>
+
+
+  <span class=c1>// Load entry module and return exports
+</span><span class=c1></span>  <span class=c1>// 入口模块
+</span><span class=c1></span>  <span class=k>return</span> <span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>(</span><span class=mi>__</span><span class=nx>webpack_require__</span><span class=p>.</span><span class=nx>s</span> <span class=o>=</span> <span class=s2>&#34;./src/index.js&#34;</span><span class=p>);</span>
+<span class=p>})</span>
+</code></pre></div></section><footer class=article-footer><section class=article-tags><a href=/tags/javascript/>JavaScript</a>
+<a href=/tags/webpack/>Webpack</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper><h2 class=section-title>相关文章</h2><div class=related-contents><div class="flex article-list--tile"><article><a href=/p/webpack%E4%B8%ADcss%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%A4%84%E7%90%86/><div class=article-details><h2 class=article-title>Webpack中CSS样式的处理</h2></div></a></article><article><a href=/p/webpack%E9%85%8D%E7%BD%AEhtml-template/><div class=article-details><h2 class=article-title>Webpack配置HTML Template</h2></div></a></article><article><a href=/p/es6%E4%B8%AD%E7%9A%84%E5%B0%BE%E9%80%92%E5%BD%92/><div class=article-details><h2 class=article-title>ES6中的尾递归</h2></div></a></article><article><a href=/p/vue-router%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/><div class=article-details><h2 class=article-title>Vue Router的安装与使用</h2></div></a></article><article><a href=/p/%E4%BD%BF%E7%94%A8vue-cli%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/><div class=article-details><h2 class=article-title>使用Vue-cli搭建Vue项目</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//hugo-theme-stack.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener('onColorSchemeChange',a=>{DISQUS&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2021 Ilirus</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.3.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script></body></html>

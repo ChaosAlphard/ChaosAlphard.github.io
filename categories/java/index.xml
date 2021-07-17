@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on Ilirus</title><link>https://chaosalphard.github.io/categories/java/</link><description>Recent content in Java on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 19 Oct 2020 23:37:23 +0000</lastBuildDate><atom:link href="https://chaosalphard.github.io/categories/java/index.xml" rel="self" type="application/rss+xml"/><item><title>使用自定义断言处理常见的异常</title><link>https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%82%E5%B8%B8/</link><pubDate>Mon, 19 Oct 2020 23:37:23 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%82%E5%B8%B8/</guid><description>Java中空判断随处可见，通常我们都是手动判断是否为空，然后再抛出自定义异常以及记录信息，例如:
+var data = dao.findById(id); if(data == null) { log.error(&amp;#34;数据为空, id{}&amp;#34;, id); throw new CustomException(Status.USER_NOT_EXIST); } 这样的代码写多了就觉得麻烦，可不可以简化一下呢
+使用Assert替代null判断 　我们都知道sprng中有一个Assert类，其中有一个方法notNull() 可以用来判断是否为空，并且输出自定义提示，何不根据此改造一下，做一个自定义的Assert类
+创建枚举类接口 创建默认枚举方法，需要与你自定义枚举中的属性对应
+public interface IBaseEnum { int getCode(); String getMessage(); } 创建自定义异常 public class CustomException extends Exception { private int code; private String detail; private Object data; public CustomException(IBaseEnum enums, String detail, Object data) { super(enums.getMessage()); this.code = enums.getCode(); this.detail = detail; this.data = data; } public CustomException(int code, String message, String detail, Object data) { super(message); this.</description></item><item><title>Java是值传递还是引用传递</title><link>https://chaosalphard.github.io/p/java%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</link><pubDate>Mon, 20 Apr 2020 23:45:38 +0000</pubDate><guid>https://chaosalphard.github.io/p/java%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</guid><description>进入正题之前先简单说说值传递和引用传递的区别
+按值调用(call by value)表示方法接收的是调用者提供的值，而按引用调用(call by reference)表示方法接收的是调用者提供的变量地址。一个方法可以修改传递引用所对应的变量值，而不能修改传递值调用所对应的变量值。
+下面是我用Rust来做的一个简单示范。
+Rust
+可以看到，虽然call_by_value函数和call_by_reference函数都将接收到的参数的值修改为了12450，但是由于call_by_reference函数接收的是by_ref变量的引用，所以在函数内修改by_ref的值会影响到函数外部的by_ref变量，而call_by_value函数接收的是by_val变量的值，所以在函数内修改by_val的值不会影响到函数外部的by_val变量。
+对于基本数据类型, Java是值传递还是引用传递? 看下图
+00
+可以看到，在函数内的修改并没有影响到函数外部的num，所以对于基本数据类型, Java是值传递
+对于基本数据的包装类, 也是值传递
+01
+对于引用类型, Java是值传递还是引用传递? 看下图
+02
+可以看到，在函数内的修改已经影响到了函数外部的lis，这似乎证明了对于引用类型, Java是引用传递
+但是, 我们都知道, 对于引用类型, 变量保存的是指向其堆内存的地址, 也就是说, 如果将引用类型赋值给另一个变量, 修改当前变量的值, 另一个变量也会被改变, 如何理解呢? 请看下图
+03
+可以看到, 虽然只是修改了lis而没有去修改copy, 但由于lis和copy指向的是同一内存地址, 所以对lis的修改也会体现在copy上
+ref
+回到正题，既然知道了lis变量是对于堆内存中ArrayList的引用, 那么之前的结果就不成立了, 修改changeValue方法再看 04
+可以看到, 在函数中将一个新的ArrayList的引用赋值给了lis变量, 但是函数外的lis变量依然指向的是原来的ArrayList, 所以得出结论, 对于引用类型, Java也是值传递
+结论 无论是对于基本数据类型还是引用类型，Java都是值传递，但要注意的是，对于引用类型，变量保存的是其引用，所以通过函数接收的变量去修改其指向的引用类型，也会影响到函数外的变量，而给函数接收的变量赋予新的引用，则不会影响到函数外的变量。</description></item><item><title>Java8中新增的时间处理API</title><link>https://chaosalphard.github.io/p/java8%E4%B8%AD%E6%96%B0%E5%A2%9E%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86api/</link><pubDate>Sat, 18 Apr 2020 23:40:28 +0000</pubDate><guid>https://chaosalphard.github.io/p/java8%E4%B8%AD%E6%96%B0%E5%A2%9E%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86api/</guid><description>Java8新的时间处理API 原有的java.util.Date与新增的java.time有何差异？
+java.util.Date设定为可变类型 SimpleDateFormat是非线程安全的 新的API 基于ISO 标准日历系统, 遵循Gregorian 规则 java.time包下的所有类都是不可变类型 java.time包下的所有类都是线程安全的 java.time简单介绍 java.time由以下5个包组成:
+java.time: 包含值对象的基础包 java.time.chrono: 提供对不同的日历系统的访问 java.time.format: 格式化和解析时间和日期 java.time.temporal: 包括底层框架和扩展特性 java.time.zone: 包含时区支持的类 关于java.time下, 类的简介:
+Instant: 时间戳 LocalDate: 只包含日期，比如: 2020-01-01 LocalTime: 只包含时间，比如: 12:00:00 LocalDateTime: 包含日期和时间，比如: 2020-01-01T12:00:00 Duration: 时间段, 主要用于计算两个时间之间的差值 Peroid: 时间段, 主要用于计算两个日期之间的差值 ZoneOffset: 时区偏移量，比如: +8:00 ZonedDateTime: 带时区的日期时间 Clock: 时钟，可以获取或指定时区, 也可获取当前的时刻 DateTimeFormatter: 时间格式化 关于java.time下大部分类的方法前缀简介:
+of: 静态工厂方法(用类名去调用)。 parse: 静态工厂方法，关注于解析(用类名去调用)。 now: 静态工厂方法，用当前时间创建实例(用类名去调用) get: 获取某些东西的值。 is: 检查某些东西的是否是true。 with: 返回一个部分状态改变了的时间日期对象拷贝(单独一个with方法,参数为TemporalAdjusters类型) plus: 返回一个时间增加了的、时间日期对象拷贝(如果参数是负数也能够有minus方法的效果) minus: 返回一个时间减少了的、时间日期对象拷贝 to: 把当前时间日期对象转换成另外一个，可能会损失部分状态.</description></item></channel></rss>

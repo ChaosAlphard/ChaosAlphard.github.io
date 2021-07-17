@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VMWare on Ilirus</title><link>https://chaosalphard.github.io/tags/vmware/</link><description>Recent content in VMWare on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 05 Jul 2018 21:14:34 +0000</lastBuildDate><atom:link href="https://chaosalphard.github.io/tags/vmware/index.xml" rel="self" type="application/rss+xml"/><item><title>通过禁用内存修整来提高虚拟机性能</title><link>https://chaosalphard.github.io/p/%E9%80%9A%E8%BF%87%E7%A6%81%E7%94%A8%E5%86%85%E5%AD%98%E4%BF%AE%E6%95%B4%E6%9D%A5%E6%8F%90%E9%AB%98%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD/</link><pubDate>Thu, 05 Jul 2018 21:14:34 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E9%80%9A%E8%BF%87%E7%A6%81%E7%94%A8%E5%86%85%E5%AD%98%E4%BF%AE%E6%95%B4%E6%9D%A5%E6%8F%90%E9%AB%98%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD/</guid><description>通过禁用内存修整来提高虚拟机性能 vmem 　VMware在运行每个虚拟机的时候会在硬盘上为相应的虚拟机生成一个内存实时镜像 .vmem 文件用于存储虚拟机内存的改变，这个文件主要是将虚拟机内存的内容映射到磁盘，以支持在虚拟机的暂停等功能。
+同时，VMware会在使用的时候统计内存中的数据的使用情况，然后将不常用的一些内存数据存入 .vmem 文件从而节省内存的使用。
+但是内存交换带来的大量读写操作会导致性能下降。
+解决方案 关闭虚拟机
+点击 虚拟机-&amp;gt;设置-&amp;gt;选项-&amp;gt;高级-&amp;gt;勾选“禁用内存页面修整”选项。
+找到*.vmx虚拟机定义文件
+在最后一行加入
+mainMem.useNamedFile = &amp;quot;FALSE&amp;quot; 完成
+需要注意的是，在添加这段代码后虚拟机的暂停、快速启动等操作会受到影响</description></item></channel></rss>

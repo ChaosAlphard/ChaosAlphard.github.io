@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Ilirus</title><link>https://chaosalphard.github.io/tags/git/</link><description>Recent content in Git on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 18 Sep 2019 17:46:03 +0000</lastBuildDate><atom:link href="https://chaosalphard.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git提交的回滚</title><link>https://chaosalphard.github.io/p/git%E6%8F%90%E4%BA%A4%E7%9A%84%E5%9B%9E%E6%BB%9A/</link><pubDate>Wed, 18 Sep 2019 17:46:03 +0000</pubDate><guid>https://chaosalphard.github.io/p/git%E6%8F%90%E4%BA%A4%E7%9A%84%E5%9B%9E%E6%BB%9A/</guid><description>revert git revert &amp;lt;commit&amp;gt;
+生成一个撤消了commit 引入的修改的新提交，然后应用到当前分支。
+commit 可以通过使用git log 来查看
+revert 是提交一个 撤销了更改的 新提交，而不是从项目历史中移除这个提交。这会避免Git丢失项目历史，是一种比较安全的方式。
+reset git reset
+重设暂存区，但不改变工作区，匹配最近的一次提交。
+git reset --hard
+重设暂存区和工作区，匹配最近的一次提交。
+--hard 会使git更改工作区中的文件。确定要扔掉本地的开发进度再使用。
+git reset &amp;lt;commit&amp;gt;
+将暂存区重设到这个提交，但不改变工作区。
+所有commit 之后的更改会保留在工作区中，适用于重新提交更干净的项目历史。
+git reset --hard &amp;lt;commit&amp;gt;
+将暂存区和工作区都重设到这个提交。
+git reset &amp;lt;file&amp;gt;
+从暂存区移除某个文件，但不改变工作区。
+reset 和 revert git revert 可以针对历史中任何一个提交，而 git reset 只能从当前提交向前回溯。比如，你想用 git reset 重设一个旧的提交，你不得不移除那个提交后的所有提交，再移除那个提交，然后重新提交后面的所有提交。
+revert被设计为撤销公开的提交的安全方式，reset被设计为重设本地更改。
+因为两个命令的目的不同，它们的实现也不一样：reset完全地移除了一堆更改，而revert保留了原来的更改，用一个新的提交来实现撤销。
+查看之前的内容 检出提交 git checkout &amp;lt;commit&amp;gt;</description></item><item><title>Git常用指令</title><link>https://chaosalphard.github.io/p/git%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link><pubDate>Sat, 03 Aug 2019 20:44:37 +0000</pubDate><guid>https://chaosalphard.github.io/p/git%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid><description>Git常用指令 git init: 为当前文件夹初始化Git仓库
+git status: 查看状态(modified, untracked)
+git add &amp;lt;file|path&amp;gt;: 添加指定文件/文件夹到暂存区(staging index)
+git commit: 提交暂存区的文件到版本库
+git commit -m 'msg': 提交暂存区的文件到版本库
+git commit -am 'msg': 跳过git add步骤，直接提交所有工作区(working directory)已追踪文件
+git log: 查看提交信息/记录
+Git的三层结构 working directory: 工作区 staging index: 暂存区 git directory: 版本库 Git文件的四种状态 Untracked: 未被追踪 Modified: 已被修改，但未添加到暂存区 Staged: 添加到了暂存区，但未提交到版本库 Committed: 数据被储存在本地库中</description></item><item><title>删除所有Git提交记录</title><link>https://chaosalphard.github.io/p/%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89git%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95/</link><pubDate>Sun, 14 Jul 2019 19:11:26 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89git%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95/</guid><description>删除所有提交记录 一种比较取巧的方法
+新建分支 git checkout --orphan latest_branch 添加所有文件 git add -A 提交更改 git commit -am &amp;quot;merge commit&amp;quot; 删除分支 git branch -D master 重命名当前分支 git branch -m master 强制更新存储库 git push -f origin master</description></item></channel></rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>软件 on Ilirus</title><link>https://chaosalphard.github.io/categories/%E8%BD%AF%E4%BB%B6/</link><description>Recent content in 软件 on Ilirus</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 22 May 2021 19:38:27 +0800</lastBuildDate><atom:link href="https://chaosalphard.github.io/categories/%E8%BD%AF%E4%BB%B6/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Hugo搭建个人博客</title><link>https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link><pubDate>Sat, 22 May 2021 19:38:27 +0800</pubDate><guid>https://chaosalphard.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid><description>近期我部署在Gitee上的博客已经不能用了, 虽然还能上传, 但是已经不会把上传的文章更新出来了, 故迁移到Github上, 顺便Hexo文章生成速度不太理想, 趁着这次部署站点迁移一并切换到Hugo.
+搭建Hugo写作环境 Hugo下载 首先从Hugo官网下载适合自己电脑环境的Hugo版本。
+下载地址：https://github.com/gohugoio/hugo/releases
+将解压出来的Hugo.exe 添加到环境变量中。
+创建Github Pages 仓库 进入Github网站，点击New Repositories 按钮，新建一个仓库，名称我这里选blog，访问类型选择Public 创建仓库
+创建完成后点击Settings选项，选择Pages，Branch选择master，目录选择/docs，之后点击save按钮，即可看到上方蓝色提示：Your site is ready to be published at https://chaosalphard.github.io/blog，这个地址便是Github给你分配的博客地址，如果你有自己的域名的话可以在这里绑定。 部署网页
+初始化Hugo站点 将刚才创建的Git 仓库Clone 到本地，打开命令行，切换到刚才Clone 下来的仓库的文件夹里面，此时文件夹里面应该除了一个名为.git的隐藏文件夹之外没有其他文件了，执行hugo new site . --force 来初始化hugo站点。
+之后选择一款自己喜欢的主题，地址：https://themes.gohugo.io，下载或者Clone 到本地，将文件夹放到hugo站点的根目录下。
+编辑config.toml/config.yaml/config.json 配置文件，修改baseurl 为Github 分配的博客地址，修改theme 为你的主题文件夹名称。
+创建文章 切换到hugo站点目录，执行hugo new post/article.md 来新建一篇名为article 的文章，文件位于/content/post 目录下，打开文件进行编辑，因为我之前用Hexo的时候已经有一些文章了，所以我直接复制过来，Hexo和Hugo都支持markdown语法编写的文章，所以可以直接切换。
+部署到GitHubPages 本地调试 切换到hugo站点目录，执行hugo server -D，此时会输出以下信息
+~/Hugo/blog&amp;gt; hugo server -D Start building sites … | ZH-CN -------------------+-------- Pages | 182 Paginator pages | 20 Non-page files | 4 Static files | 0 Processed images | 13 Aliases | 61 Sitemaps | 1 Cleaned | 0 Built in 3795 ms Watching for changes in ~/Hugo/blog/{archetypes,assets,content,data,layouts,static,themes} Watching for config changes in ~/Hugo/blog/config.</description></item><item><title>VSCode配置Springboot开发环境</title><link>https://chaosalphard.github.io/p/vscode%E9%85%8D%E7%BD%AEspringboot%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><pubDate>Thu, 03 Oct 2019 20:36:06 +0000</pubDate><guid>https://chaosalphard.github.io/p/vscode%E9%85%8D%E7%BD%AEspringboot%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid><description>虽说Springboot的首选开发IDE是IntelliJ IDEA，然而对于老爷机来说IDEA太过庞大，对于因为某些原因而无法使用主力开发电脑时，使用VSCode来开发Springboot也不失为一个不错的选择。
+安装开发扩展 在商店中搜索Java Extension Pack 扩展，并安装。
+这是一个扩展包，VSCode 会自动安装关联的扩展：
+Cloudfoundry Manifest YML Support Concourse CI Pipeline Editor Debugger for Java Java Dependency Viewer Java Test Runner Language Support for Java(TM) by Red Hat Maven for Java 在商店中搜索Spring Boot Extension Pack 扩展，并安装。
+这是一个扩展包，VSCode 会自动安装关联的扩展：
+Spring Boot Dashboard Spring Boot Tools Spring Initializr Java Support Visual Studio IntelliCode 配置Java与Maven路径 打开VSCode的设置文件(setting.json)， 写入以下配置
+{ // java路径 &amp;#34;java.home&amp;#34;: &amp;#34;C:/Software/java11/jdk&amp;#34;, // maven配置文件路径 &amp;#34;java.</description></item><item><title>配置Firefox浏览器书签打开方式</title><link>https://chaosalphard.github.io/p/%E9%85%8D%E7%BD%AEfirefox%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/</link><pubDate>Fri, 03 Aug 2018 16:28:24 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E9%85%8D%E7%BD%AEfirefox%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/</guid><description>配置Firefox浏览器书签打开方式 在Firefox浏览器中，书签和地址栏链接的打开方式默认是覆盖当前标签页的，那么，怎样让Firefox浏览器默认在新标签页打开书签和地址栏链接呢？
+其实很简单。
+首先，在浏览器地址栏输入
+about:config 然后搜索&amp;quot;intab&amp;quot;
+将以下两个选项的值
+# 在新标签页打开书签 browser.tabs.loadBookmarksInTabs # 在新标签页打开url 地址 browser.urlbar.openintab 由false改为true即可
+适用版本61.0+</description></item><item><title>通过禁用内存修整来提高虚拟机性能</title><link>https://chaosalphard.github.io/p/%E9%80%9A%E8%BF%87%E7%A6%81%E7%94%A8%E5%86%85%E5%AD%98%E4%BF%AE%E6%95%B4%E6%9D%A5%E6%8F%90%E9%AB%98%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD/</link><pubDate>Thu, 05 Jul 2018 21:14:34 +0000</pubDate><guid>https://chaosalphard.github.io/p/%E9%80%9A%E8%BF%87%E7%A6%81%E7%94%A8%E5%86%85%E5%AD%98%E4%BF%AE%E6%95%B4%E6%9D%A5%E6%8F%90%E9%AB%98%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD/</guid><description>通过禁用内存修整来提高虚拟机性能 vmem 　VMware在运行每个虚拟机的时候会在硬盘上为相应的虚拟机生成一个内存实时镜像 .vmem 文件用于存储虚拟机内存的改变，这个文件主要是将虚拟机内存的内容映射到磁盘，以支持在虚拟机的暂停等功能。
+同时，VMware会在使用的时候统计内存中的数据的使用情况，然后将不常用的一些内存数据存入 .vmem 文件从而节省内存的使用。
+但是内存交换带来的大量读写操作会导致性能下降。
+解决方案 关闭虚拟机
+点击 虚拟机-&amp;gt;设置-&amp;gt;选项-&amp;gt;高级-&amp;gt;勾选“禁用内存页面修整”选项。
+找到*.vmx虚拟机定义文件
+在最后一行加入
+mainMem.useNamedFile = &amp;quot;FALSE&amp;quot; 完成
+需要注意的是，在添加这段代码后虚拟机的暂停、快速启动等操作会受到影响</description></item></channel></rss>
